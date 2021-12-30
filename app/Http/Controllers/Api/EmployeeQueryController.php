@@ -16,6 +16,6 @@ class EmployeeQueryController extends Controller
             $query = Employee::orderBy('id');
         }
 
-        return $query->paginate(10);
+        return $query->limit(10)->get();
     }
 }

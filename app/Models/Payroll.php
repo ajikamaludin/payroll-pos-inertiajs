@@ -18,4 +18,9 @@ class Payroll extends Model
         'item_count',
         'recived',
     ];
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

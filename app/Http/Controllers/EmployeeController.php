@@ -36,11 +36,17 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'whatsapp' => 'nullable|string',
+            'whatsapp' => 'nullable|numeric',
+            'basic_salary' => 'nullable|numeric',
             'photo' => 'nullable|image'
         ]);
 
-        $employee = Employee::make($request->only(['name', 'whatsapp']));
+        $employee = Employee::make($request->only(['name', 'whatsapp', 'basic_salary']));
+
+        if ($request->basic_salary == null) {
+            $employee->basic_salary = 0;
+        }
+
         $photo = $request->file('photo');
         if ($photo != null) {
             $photo->store('public');
@@ -63,11 +69,16 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'whatsapp' => 'nullable|string',
+            'whatsapp' => 'nullable|numeric',
+            'basic_salary' => 'nullable|numeric',
             'photo' => 'nullable|image'
         ]);
 
-        $employee->fill($request->only(['name', 'whatsapp']));
+        $employee->fill($request->only(['name', 'whatsapp', 'basic_salary']));
+
+        if ($request->basic_salary === null) {
+            $employee->basic_salary = 0;
+        }
 
         $photo = $request->file('photo');
         if ($photo != null) {

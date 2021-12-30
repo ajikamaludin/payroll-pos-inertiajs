@@ -18,7 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('name')->nullable();
             $table->string('photo')->nullable();
             $table->string('whatsapp')->nullable();
-            $table->decimal('basic_salary')->default(0);
+            $table->decimal('basic_salary', 12, 2)->default(0);
             $table->timestamps();
         });
     }

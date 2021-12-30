@@ -1,5 +1,7 @@
+import moment from 'moment'
+
 export const formatDate = (date) => {
-    return date.toLocaleDateString()
+    return moment(date).format('DD/MM/yyyy')
 }
 
 export function formatIDR(amount) {

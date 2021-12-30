@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PayrollController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,13 @@ use App\Http\Controllers\EmployeeController;
 */
 
 Route::get('/', function () {
+    if (User::count() === 0) {
+        User::create([
+            'name' => 'Admin',
+            'password' => 'password',
+            'email' => 'admin@admin.com'
+        ]);
+    }
     return redirect()->route('login');
 });
 
@@ -40,7 +49,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/employees/{employee}', [EmployeeController::class, 'update'])->name('employees.update');
     Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
 
-    Route::get('/payrolls', fn () => inertia('Payrolls'))->name('payrolls.index');
+    Route::get('/payrolls', [PayrollController::class, 'index'])->name('payrolls.index');
+    Route::post('/payrolls', [PayrollController::class, 'store'])->name('payrolls.store');
+    Route::put('/payrolls/{payroll}', [PayrollController::class, 'update'])->name('payrolls.update');
+    Route::delete('/payrolls/{payroll}', [PayrollController::class, 'destroy'])->name('payrolls.destroy');
+
     Route::get('/report', fn () => inertia('Report'))->name('report');
 });
 

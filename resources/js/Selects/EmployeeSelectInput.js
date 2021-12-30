@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { useDebounce } from '@/Hooks'
 
-export default function CategorySelectInput(props) {
+export default function EmployeeSelectInput(props) {
     const {
         value = '',
         onItemSelected = null,
@@ -60,7 +60,7 @@ export default function CategorySelectInput(props) {
 
     useEffect(() => {
         setLoading(true)
-        fetch(`${route('api.categories.query')}?q=${q}`)
+        fetch(`${route('api.employees.query')}?q=${q}`)
             .then((res) => res.json())
             .then((json) => {
                 setShowItem(json)
@@ -97,7 +97,7 @@ export default function CategorySelectInput(props) {
                                 <input
                                     className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                                     onMouseDown={onInputMouseDown}
-                                    placeholder="select category..."
+                                    placeholder="pilih karyawan..."
                                     value={isSelected ? selected : query}
                                     onChange={(e) =>
                                         filterItems(e.target.value)
@@ -184,7 +184,7 @@ export default function CategorySelectInput(props) {
                                                         <div className="w-full items-center flex">
                                                             <div className="mx-2">
                                                                 <span>
-                                                                    {item.name}
+                                                                    {item.name} - {item.whatsapp}
                                                                 </span>
                                                             </div>
                                                         </div>

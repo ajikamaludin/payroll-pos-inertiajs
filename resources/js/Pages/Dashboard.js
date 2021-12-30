@@ -20,14 +20,14 @@ export default function Dashboard(props) {
                 <div className="flex flex-row sm:px-6 lg:px-8 space-x-4">
                     <div className="bg-white overflow-hidden shadow-sm rounded-lg w-full">
                         <div className="py-4 px-4 font-bold text-xl">
-                            Barang
                             <div className="text-4xl">{product}</div>
+                            Barang
                         </div>
                     </div>
                     <div className="bg-white overflow-hidden shadow-sm rounded-lg w-full">
                         <div className="py-4 px-4 font-bold text-xl">
-                            Karyawan
                             <div className="text-4xl">{employee}</div>
+                            Karyawan
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
@@ -15,4 +16,14 @@ class Employee extends Model
         'whatsapp',
         'basic_salary',
     ];
+
+    protected $appends = ['photo_url'];
+
+    public function getPhotoUrlAttribute()
+    {
+        if ($this->photo != null) {
+            return asset(Storage::url($this->photo));
+        }
+        return null;
+    }
 }

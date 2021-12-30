@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react';
 import Button from '@/Components/Button';
-import Checkbox from '@/Components/Checkbox';
 import Guest from '@/Layouts/Guest';
-import Input from '@/Components/Input';
-import Label from '@/Components/Label';
-import ValidationErrors from '@/Components/ValidationErrors';
-import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import { Head, useForm } from '@inertiajs/inertia-react';
 
-export default function Login({ status, canResetPassword }) {
+export default function Login({ status }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
-        remember: '',
+        remember: false,
     });
 
     useEffect(() => {
@@ -21,7 +17,7 @@ export default function Login({ status, canResetPassword }) {
     }, []);
 
     const onHandleChange = (event) => {
-        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+        setData(event.target.name, event.target.value);
     };
 
     const submit = (e) => {
@@ -34,61 +30,60 @@ export default function Login({ status, canResetPassword }) {
         <Guest>
             <Head title="Log in" />
 
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
-
-            <ValidationErrors errors={errors} />
+            {status && (
+                <div className="mb-4 font-medium text-sm text-green-600">
+                    {status}
+                </div>
+            )}
 
             <form onSubmit={submit}>
-                <div>
-                    <Label forInput="email" value="Email" />
-
-                    <Input
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Email</span>
+                    </label>
+                    <input
                         type="text"
                         name="email"
+                        className={`input input-bordered ${
+                            errors.email && 'input-error'
+                        }`}
                         value={data.email}
-                        className="mt-1 block w-full"
                         autoComplete="username"
-                        isFocused={true}
-                        handleChange={onHandleChange}
+                        autoFocus={true}
+                        onChange={onHandleChange}
                     />
+                    <label className="label">
+                        <span className="label-text-alt">{errors.email}</span>
+                    </label>
                 </div>
 
-                <div className="mt-4">
-                    <Label forInput="password" value="Password" />
-
-                    <Input
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Password</span>
+                    </label>
+                    <input
                         type="password"
                         name="password"
+                        className={`input input-bordered ${
+                            errors.password && 'input-error'
+                        }`}
                         value={data.password}
-                        className="mt-1 block w-full"
                         autoComplete="current-password"
-                        handleChange={onHandleChange}
+                        onChange={onHandleChange}
                     />
-                </div>
-
-                <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
-
-                        <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                    <label className="label">
+                        <span className="label-text-alt">
+                            {errors.password}
+                        </span>
                     </label>
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-
                     <Button className="ml-4" processing={processing}>
                         Log in
                     </Button>
                 </div>
             </form>
         </Guest>
-    );
+    )
 }

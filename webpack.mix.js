@@ -18,7 +18,7 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
         require('autoprefixer'),
     ])
-    .disableSuccessNotifications()
+    .disableNotifications()
     .webpackConfig(require('./webpack.config'));
 
 if (mix.inProduction()) {

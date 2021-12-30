@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import { ToastContainer } from 'react-toastify'
+import { Link } from '@inertiajs/inertia-react'
 
-import Dropdown from '@/Components/Dropdown';
-import NavLink from '@/Components/NavLink';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/inertia-react';
-import AppLogo from '@/Components/AppLogo';
+import Dropdown from '@/Components/Dropdown'
+import NavLink from '@/Components/NavLink'
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink'
+import AppLogo from '@/Components/AppLogo'
+import FormUserModal from '@/Modals/FormUserModal'
+import { useModalState } from '@/Hooks'
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+
+    const {isOpen, toggle} = useModalState(false)
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -28,11 +33,36 @@ export default function Authenticated({ auth, header, children }) {
                                 >
                                     Dashboard
                                 </NavLink>
-                                <NavLink>Barang</NavLink>
-                                <NavLink>Karyawan</NavLink>
-                                <NavLink>Users</NavLink>
-                                <NavLink>Gaji</NavLink>
-                                <NavLink>Laporan</NavLink>
+                                <NavLink
+                                    href={route('products.index')}
+                                    active={route().current('products.index')}
+                                >
+                                    Barang
+                                </NavLink>
+                                <NavLink
+                                    href={route('employees.index')}
+                                    active={route().current('employees.index')}
+                                >
+                                    Karyawan
+                                </NavLink>
+                                <NavLink
+                                    href={route('users.index')}
+                                    active={route().current('users.index')}
+                                >
+                                    Users
+                                </NavLink>
+                                <NavLink
+                                    href={route('payrolls.index')}
+                                    active={route().current('payrolls.index')}
+                                >
+                                    Gaji
+                                </NavLink>
+                                <NavLink
+                                    href={route('report')}
+                                    active={route().current('report')}
+                                >
+                                    Laporan
+                                </NavLink>
                             </div>
                         </div>
 
@@ -64,13 +94,12 @@ export default function Authenticated({ auth, header, children }) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-                                        <Dropdown.Link
-                                            href={route('logout')}
-                                            method="post"
-                                            as="button"
+                                        <div
+                                            onClick={toggle}
+                                            className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                                         >
                                             Profile
-                                        </Dropdown.Link>
+                                        </div>
                                         <Dropdown.Link
                                             href={route('logout')}
                                             method="post"
@@ -139,10 +168,40 @@ export default function Authenticated({ auth, header, children }) {
                         >
                             Dashboard
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('products.index')}
+                            active={route().current('products.index')}
+                        >
+                            Barang
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('employees.index')}
+                            active={route().current('employees.index')}
+                        >
+                            Karyawan
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('users.index')}
+                            active={route().current('users.index')}
+                        >
+                            Users
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('payrolls.index')}
+                            active={route().current('payrolls.index')}
+                        >
+                            Gaji
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('report')}
+                            active={route().current('report')}
+                        >
+                            Laporan
+                        </ResponsiveNavLink>
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
-                        <div className="px-4">
+                        <div className="px-4" onClick={toggle}>
                             <div
                                 className="font-medium text-base text-gray-800
                                 "
@@ -166,7 +225,6 @@ export default function Authenticated({ auth, header, children }) {
                     </div>
                 </div>
             </nav>
-
             {header && (
                 <header className="bg-white shadow">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -174,8 +232,20 @@ export default function Authenticated({ auth, header, children }) {
                     </div>
                 </header>
             )}
-
-            <main>{children}</main>
+            <main className="max-w-7xl mx-auto">{children}</main>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                theme="colored"
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <FormUserModal isOpen={isOpen} toggle={toggle} user={auth.user} />
         </div>
     )
 }

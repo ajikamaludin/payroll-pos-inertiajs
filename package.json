@@ -28,6 +28,10 @@
     },
     "dependencies": {
         "daisyui": "^1.20.0",
-        "react-datepicker": "^4.5.0"
+        "moment": "^2.29.1",
+        "react-datepicker": "^4.5.0",
+        "react-number-format": "^4.9.0",
+        "react-toastify": "^8.1.0",
+        "react-use": "^17.3.1"
     }
 }

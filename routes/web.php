@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-    Route::get('/products', fn () => inertia('Products'))->name('products.index');
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::post('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
     Route::get('/employees', fn () => inertia('Employees'))->name('employees.index');
     Route::get('/payrolls', fn () => inertia('Payrolls'))->name('payrolls.index');
     Route::get('/report', fn () => inertia('Report'))->name('report');

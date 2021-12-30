@@ -1801,6 +1801,27 @@ html {
   left: 0;
   z-index: 10;
 }
+.textarea {
+  flex-shrink: 1;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  font-size: .875rem;
+  line-height: 2;
+  padding: .5rem 1rem;
+  min-height: 3rem;
+  --tw-bg-opacity: 1;
+  background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+  --tw-border-opacity: 0;
+  border-color: hsla(var(--bc) / var(--tw-border-opacity, 1));
+  border-width: 1px;
+  border-radius: var(--rounded-btn, .5rem);
+}
+.textarea:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsla(var(--bc) / .2);
+}
 .toggle:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -2293,6 +2314,11 @@ html {
   --tw-text-opacity: 0.4;
   color: hsla(var(--bc) / var(--tw-text-opacity, 1));
 }
+.mockup-phone .display {
+  overflow: hidden;
+  border-radius: 40px;
+  margin-top: -25px;
+}
 .modal-box {
   --tw-bg-opacity: 1;
   background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1));
@@ -2421,6 +2447,37 @@ html {
   --tw-bg-opacity: 1;
   background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1));
 }
+.textarea-bordered {
+  --tw-border-opacity: 0.2;
+}
+.textarea-disabled,.textarea[disabled] {
+  --tw-bg-opacity: 1;
+  background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1));
+  --tw-border-opacity: 1;
+  border-color: hsla(var(--b2) / var(--tw-border-opacity, 1));
+  cursor: not-allowed;
+  --tw-text-opacity: 0.2;
+}
+.textarea-disabled::-moz-placeholder,.textarea[disabled]::-moz-placeholder {
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(var(--bc) / var(--tw-placeholder-opacity, 1));
+}
+.textarea-disabled:-ms-input-placeholder,.textarea[disabled]:-ms-input-placeholder {
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(var(--bc) / var(--tw-placeholder-opacity, 1));
+}
+.textarea-disabled::-moz-placeholder, .textarea[disabled]::-moz-placeholder {
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(var(--bc) / var(--tw-placeholder-opacity, 1));
+}
+.textarea-disabled:-ms-input-placeholder, .textarea[disabled]:-ms-input-placeholder {
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(var(--bc) / var(--tw-placeholder-opacity, 1));
+}
+.textarea-disabled::placeholder,.textarea[disabled]::placeholder {
+  --tw-placeholder-opacity: 0.2;
+  color: hsla(var(--bc) / var(--tw-placeholder-opacity, 1));
+}
 .toggle {
   --chkbg: hsla(var(--bc) / .2);
   --focus-shadow: 0 0 0;
@@ -2462,6 +2519,9 @@ html {
 }
 .visible {
   visibility: visible;
+}
+.invisible {
+  visibility: hidden;
 }
 .fixed {
   position: fixed;
@@ -2621,6 +2681,9 @@ html {
 }
 .h-6 {
   height: 1.5rem;
+}
+.h-24 {
+  height: 6rem;
 }
 .min-h-screen {
   min-height: 100vh;

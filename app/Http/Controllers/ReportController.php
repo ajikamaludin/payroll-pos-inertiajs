@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PayrollExport;
 use App\Models\Payroll;
 use Illuminate\Http\Request;
 
@@ -27,5 +28,10 @@ class ReportController extends Controller
             '_startDate' => $startDate,
             '_endDate' => $endDate
         ]);
+    }
+
+    public function export(Request $request)
+    {
+        return (new PayrollExport($request->startDate, $request->endDate))->download('reports.xlsx', \Maatwebsite\Excel\Excel::XLSX);
     }
 }

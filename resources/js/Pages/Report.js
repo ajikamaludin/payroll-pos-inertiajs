@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
+import qs from 'qs'
 import { Head } from '@inertiajs/inertia-react'
 import { Inertia } from '@inertiajs/inertia'
 import { usePrevious } from 'react-use'
@@ -21,14 +22,16 @@ export default function Reports(props) {
     )
     const preValue = usePrevious(`${startDate}-${endDate}`)
 
+    const params = {
+        startDate: moment(startDate).format('yyyy-MM-DD'),
+        endDate: moment(endDate).format('yyyy-MM-DD'),
+    }
+
     useEffect(() => {
         if (preValue) {
             Inertia.get(
                 route(route().current()),
-                {
-                    startDate: moment(startDate).format('yyyy-MM-DD'),
-                    endDate: moment(endDate).format('yyyy-MM-DD'),
-                },
+                params,
                 {
                     replace: true,
                     preserveState: true,
@@ -57,12 +60,12 @@ export default function Reports(props) {
                         <div className="card-body">
                             <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 items-start md:items-stretch w-full mb-4 justify-between">
                                 <div className="btn-group my-auto">
-                                    <div
+                                    <a
                                         className="btn btn-info btn-outline"
-                                        onClick={() => {}}
+                                        href={`${route('report.export')}?${qs.stringify(params)}`}
                                     >
                                         Download Excel
-                                    </div>
+                                    </a>
                                 </div>
                                 <div className="flex flex-row md:space-x-4">
                                     <div>
@@ -167,7 +170,7 @@ export default function Reports(props) {
                                     </tbody>
                                 </table>
                             </div>
-                            <Pagination links={links} />
+                            <Pagination links={links} params={params}/>
                         </div>
                     </div>
                 </div>

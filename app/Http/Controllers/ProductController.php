@@ -75,7 +75,7 @@ class ProductController extends Controller
         $photo = $request->file('photo');
         if ($photo != null) {
             if ($product->photo != null) {
-                Storage::delete('public/'.$product->photo);
+                // Storage::delete('public/'.$product->photo);
                 $product->photo = null;
             }
             $photo->store('public');

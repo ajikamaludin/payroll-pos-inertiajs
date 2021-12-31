@@ -83,7 +83,7 @@ export default function FormEmployeeModal(props) {
             }
         >
             <div className="modal-box">
-                <h1 className="font-bold text-2xl pb-8">Barang</h1>
+                <h1 className="font-bold text-2xl pb-8">Karyawan</h1>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Nama</span>

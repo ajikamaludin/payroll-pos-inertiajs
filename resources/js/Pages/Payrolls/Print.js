@@ -1,5 +1,4 @@
 import React from 'react'
-import { Head } from '@inertiajs/inertia-react'
 import { formatDate, formatIDR } from '@/utils'
 
 const Td = ({ children, colSpan, className }) => {
@@ -14,7 +13,6 @@ const Print = React.forwardRef((props, ref) => {
     const {user, date, employee, items, amount, cuts, bonus, total} = props
     return (
         <>
-            <Head title="Print" />
             <div ref={ref} className="p-4">
                 <table className="border-collapse border border-gray-400 w-full">
                     <thead>

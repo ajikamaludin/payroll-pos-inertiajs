@@ -155,7 +155,11 @@ export default function Create(props) {
                                   >
                                       <img
                                           src={product.photo_url}
-                                          style={{ height: '100px' }}
+                                          style={{
+                                              height: '100px',
+                                              objectFit: 'cover',
+                                              width: '100%',
+                                          }}
                                       />
                                       <div className="p-4 flex flex-col justify-items-center items-center space-y-4">
                                           <div className="font-bold text-center">
@@ -317,7 +321,9 @@ export default function Create(props) {
                               <div className="grid grid-cols-2 gap-2 w-full">
                                   <div
                                       className="btn btn-primary"
-                                      disabled={processing}
+                                      disabled={
+                                          !processing ? (data.employee_id === null || data.items.length === 0) : processing
+                                      }
                                       onClick={handleSubmit}
                                   >
                                       Simpan
@@ -326,7 +332,9 @@ export default function Create(props) {
                                       trigger={() => (
                                           <div
                                               className="btn btn-primary"
-                                              disabled={processing}
+                                              disabled={
+                                                  (data.employee_id === null || data.items.length === 0)
+                                              }
                                           >
                                               Cetak
                                           </div>
@@ -339,16 +347,17 @@ export default function Create(props) {
                   </div>
               </div>
               <div className="hidden">
-                  <Print 
-                    user={props.auth.user}
-                    date={data.date}
-                    employee={data.employee}
-                    items={data.items}
-                    amount={itemAmount}
-                    cuts={data.cuts}
-                    bonus={data.bonus}
-                    total={totalAmount}
-                    ref={componentToPrint} />
+                  <Print
+                      user={props.auth.user}
+                      date={data.date}
+                      employee={data.employee}
+                      items={data.items}
+                      amount={itemAmount}
+                      cuts={data.cuts}
+                      bonus={data.bonus}
+                      total={totalAmount}
+                      ref={componentToPrint}
+                  />
               </div>
           </div>
       </Authenticated>

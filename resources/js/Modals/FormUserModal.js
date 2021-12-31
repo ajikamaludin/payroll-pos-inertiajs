@@ -63,11 +63,12 @@ export default function FormUserModal(props) {
                           opacity: 1,
                           pointerEvents: 'auto',
                           visibility: 'visible',
+                          overflowY: 'initial',
                       }
                     : {}
             }
         >
-            <div className="modal-box">
+            <div className="modal-box overflow-y-auto max-h-screen">
                 <h1 className="font-bold text-2xl pb-8">User</h1>
                 <div className="form-control">
                     <label className="label">
@@ -120,7 +121,9 @@ export default function FormUserModal(props) {
                         onChange={handleOnChange}
                     />
                     <label className="label">
-                        <span className="label-text-alt">{errors.password}</span>
+                        <span className="label-text-alt">
+                            {errors.password}
+                        </span>
                     </label>
                 </div>
                 <div className="modal-action">

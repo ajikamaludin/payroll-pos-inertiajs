@@ -95,7 +95,7 @@ class PayrollController extends Controller
         DB::beginTransaction();
         $payroll = Payroll::create([
             'employee_id' => $request->employee_id,
-            'date' => $request->date,
+            'date' => \Carbon\Carbon::parse($request->date)->toDateString(),
             'amount' => $amount,
             'cuts' => $request->cuts,
             'bonus' => $request->bonus,
@@ -169,7 +169,7 @@ class PayrollController extends Controller
         DB::beginTransaction();
         $payroll->update([
             'employee_id' => $request->employee_id,
-            'date' => $request->date,
+            'date' => \Carbon\Carbon::parse($request->date)->toDateString(),
             'amount' => $amount,
             'cuts' => $request->cuts,
             'bonus' => $request->bonus,

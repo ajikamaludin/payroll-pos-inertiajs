@@ -172,7 +172,11 @@ export default function Edit(props) {
                                     >
                                         <img
                                             src={product.photo_url}
-                                            style={{ height: '100px' }}
+                                            style={{
+                                                height: '100px',
+                                                objectFit: 'cover',
+                                                width: '100%',
+                                            }}
                                         />
                                         <div className="p-4 flex flex-col justify-items-center items-center space-y-4">
                                             <div className="font-bold text-center">

@@ -76,14 +76,15 @@ export default function FormProductModal(props) {
             style={
                 isOpen
                     ? {
-                        opacity: 1,
-                        pointerEvents: 'auto',
-                        visibility: 'visible',
-                    }
+                          opacity: 1,
+                          pointerEvents: 'auto',
+                          visibility: 'visible',
+                          overflowY: 'initial',
+                      }
                     : {}
             }
         >
-            <div className="modal-box">
+            <div className="modal-box overflow-y-auto max-h-screen">
                 <h1 className="font-bold text-2xl pb-8">Barang</h1>
                 <div className="form-control">
                     <label className="label">
@@ -149,8 +150,12 @@ export default function FormProductModal(props) {
                         className={`input input-bordered ${
                             errors.photo && 'input-error'
                         }`}
-                        onClick={() => {console.log(inputPhoto.current.click())}}
-                    >{data.photo ? data.photo.name : ''}</div>
+                        onClick={() => {
+                            console.log(inputPhoto.current.click())
+                        }}
+                    >
+                        {data.photo ? data.photo.name : ''}
+                    </div>
                     <input
                         ref={inputPhoto}
                         type="file"
@@ -164,9 +169,7 @@ export default function FormProductModal(props) {
                     </label>
                 </div>
                 <div className="form-control">
-                    {data.img_alt !== null && (
-                        <img src={data.img_alt}/>
-                    )}
+                    {data.img_alt !== null && <img src={data.img_alt} />}
                 </div>
                 <div className="modal-action">
                     <div

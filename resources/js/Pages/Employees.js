@@ -138,7 +138,7 @@ export default function Employees(props) {
                                     </tbody>
                                 </table>
                             </div>
-                            <Pagination links={links} />
+                            <Pagination links={links} params={{ q: search }} />
                         </div>
                     </div>
                 </div>

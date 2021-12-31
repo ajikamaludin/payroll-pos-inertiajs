@@ -23,4 +23,9 @@ class Payroll extends Model
     {
         return $this->belongsTo(Employee::class);
     }
+
+    public function items()
+    {
+        return $this->hasMany(PayrollItem::class);
+    }
 }

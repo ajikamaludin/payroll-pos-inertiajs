@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Models\Product;
 use App\Models\Payroll;
+use App\Models\PayrollItem;
 use Illuminate\Http\Request;
 
 class PayrollController extends Controller
@@ -16,12 +19,43 @@ class PayrollController extends Controller
     {
         $query = Payroll::with('employee');
 
+        $startDate = now()->startOfMonth()->toDateString();
+        $endDate = now()->endOfMonth()->toDateString();
+
         if ($request->startDate != null && $request->endDate != null) {
             $query->whereBetween('date', [$request->startDate, $request->endDate]);
+            $startDate = $request->startDate;
+            $endDate = $request->endDate;
+        } else {
+            $query->whereBetween('date', [$startDate, $endDate]);
         }
 
-        return inertia('Payrolls', [
+        return inertia('Payrolls/Index', [
             'payrolls' => $query->orderBy('date', 'desc')->paginate(10),
+            '_startDate' => $startDate,
+            '_endDate' => $endDate
+        ]);
+    }
+
+    /**
+     * Created resource in storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        $query = Product::orderBy('id', 'desc');
+
+        if ($request->q != null) {
+            $query = Product::where('name', 'like', '%'.$request->q.'%')
+            ->orWhere('description', 'like', '%'.$request->q.'%')
+            ->orderBy('created_at', 'desc');
+        }
+
+        return inertia('Payrolls/Create', [
+            'products' => $query->paginate(8),
+            '_search' => $request->q ? $request->q : '',
+            '_page' => $request->page ? $request->page : 1,
         ]);
     }
 
@@ -36,25 +70,66 @@ class PayrollController extends Controller
         $request->validate([
             'employee_id' => 'required|exists:employees,id',
             'date' => 'required|date',
-            'amount' => 'required|numeric',
             'cuts' => 'nullable|numeric',
             'bonus' => 'nullable|numeric',
-            'item_count' => 'nullable|numeric',
+            'items' => 'required|array',
+            'items.*.product_id' => 'required|exists:products,id',
+            'items.*.quantity' => 'required|numeric',
+            'items.*.price' => 'required|numeric'
         ]);
 
-        $recived = ($request->amount + $request->bonus) - $request->cuts;
+        $items = collect($request->items)->map(function ($item) {
+            return [
+                'product_id' => $item['product_id'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
+                'subtotal' => $item['quantity'] * $item['price']
+            ];
+        });
 
-        Payroll::create([
+        $amount = $items->sum('subtotal');
+        $itemCount = $items->sum('quantity');
+
+        $recived = ($amount + $request->bonus) - $request->cuts;
+
+        DB::beginTransaction();
+        $payroll = Payroll::create([
             'employee_id' => $request->employee_id,
             'date' => $request->date,
-            'amount' => $request->amount,
+            'amount' => $amount,
             'cuts' => $request->cuts,
             'bonus' => $request->bonus,
-            'item_count' => $request->item_count,
+            'item_count' => $itemCount,
             'recived' => $recived,
         ]);
 
+        $payroll->items()->saveMany($items->mapInto(PayrollItem::class));
+        DB::commit();
+
         return redirect()->route('payrolls.index');
+    }
+
+    /**
+     * Edit resource in storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request, Payroll $payroll)
+    {
+        $query = Product::orderBy('id', 'desc');
+
+        if ($request->q != null) {
+            $query = Product::where('name', 'like', '%'.$request->q.'%')
+            ->orWhere('description', 'like', '%'.$request->q.'%')
+            ->orderBy('created_at', 'desc');
+        }
+
+        return inertia('Payrolls/Edit', [
+            'payroll' => $payroll->load(['items.product', 'employee']),
+            'products' => $query->paginate(8),
+            '_search' => $request->q ? $request->q : '',
+            '_page' => $request->page ? $request->page : 1,
+        ]);
     }
 
     /**
@@ -69,23 +144,42 @@ class PayrollController extends Controller
         $request->validate([
             'employee_id' => 'required|exists:employees,id',
             'date' => 'required|date',
-            'amount' => 'required|numeric',
             'cuts' => 'nullable|numeric',
             'bonus' => 'nullable|numeric',
-            'item_count' => 'nullable|numeric',
+            'items' => 'required|array',
+            'items.*.product_id' => 'required|exists:products,id',
+            'items.*.quantity' => 'required|numeric',
+            'items.*.price' => 'required|numeric'
         ]);
 
-        $recived = ($request->amount + $request->bonus) - $request->cuts;
+        $items = collect($request->items)->map(function ($item) {
+            return [
+                'product_id' => $item['product_id'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
+                'subtotal' => $item['quantity'] * $item['price']
+            ];
+        });
 
+        $amount = $items->sum('subtotal');
+        $itemCount = $items->sum('quantity');
+
+        $recived = ($amount + $request->bonus) - $request->cuts;
+
+        DB::beginTransaction();
         $payroll->update([
             'employee_id' => $request->employee_id,
             'date' => $request->date,
-            'amount' => $request->amount,
+            'amount' => $amount,
             'cuts' => $request->cuts,
             'bonus' => $request->bonus,
-            'item_count' => $request->item_count,
+            'item_count' => $itemCount,
             'recived' => $recived,
         ]);
+
+        $payroll->items()->delete();
+        $payroll->items()->saveMany($items->mapInto(PayrollItem::class));
+        DB::commit();
 
         return redirect()->route('payrolls.index');
     }
@@ -98,7 +192,11 @@ class PayrollController extends Controller
      */
     public function destroy(Payroll $payroll)
     {
-        $payroll->delete();
+        DB::transaction(function () use ($payroll) {
+            $payroll->items()->delete();
+            $payroll->delete();
+        });
+
         return redirect()->route('payrolls.index');
     }
 }

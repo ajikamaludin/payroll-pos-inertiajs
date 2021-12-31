@@ -1,34 +1,50 @@
 import React, { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
-import { Head } from '@inertiajs/inertia-react'
+import { Head, Link } from '@inertiajs/inertia-react'
 import { Inertia } from '@inertiajs/inertia'
 import { usePrevious } from 'react-use'
+import { toast } from 'react-toastify'
 
+import { useModalState } from '@/Hooks'
 import Authenticated from '@/Layouts/Authenticated'
 import Pagination from '@/Components/Pagination'
+import ModalConfirm from '@/Components/ModalConfirm'
 import { formatIDR, formatDate } from '@/utils'
 
-export default function Reports(props) {
+export default function Payrolls(props) {
     const { data: payrolls, links } = props.payrolls
     const { _startDate, _endDate } = props
 
-    const [startDate, setStartDate] = useState(
-        _startDate ? new Date(_startDate) : new Date()
-    )
-    const [endDate, setEndDate] = useState(
-        _endDate ? new Date(_endDate) : new Date()
-    )
+    const [startDate, setStartDate] = useState(_startDate ?  new Date(_startDate) : new Date())
+    const [endDate, setEndDate] = useState(_endDate ? new Date(_endDate) : new Date())
     const preValue = usePrevious(`${startDate}-${endDate}`)
+
+    const confirmModal = useModalState(false)
+    const handleDelete = (payroll) => {
+        confirmModal.setData(payroll)
+        confirmModal.toggle()
+    }
+
+    const onDelete = () => {
+        const payroll = confirmModal.data
+        if (payroll != null) {
+            Inertia.delete(route('payrolls.destroy', payroll), {
+                onSuccess: () => toast.success('The Data has been deleted'),
+            })
+        }
+    }
+
+    const params = {
+        startDate: moment(startDate).format('yyyy-MM-DD'),
+        endDate: moment(endDate).format('yyyy-MM-DD'),
+    }
 
     useEffect(() => {
         if (preValue) {
             Inertia.get(
                 route(route().current()),
-                {
-                    startDate: moment(startDate).format('yyyy-MM-DD'),
-                    endDate: moment(endDate).format('yyyy-MM-DD'),
-                },
+                params,
                 {
                     replace: true,
                     preserveState: true,
@@ -56,14 +72,12 @@ export default function Reports(props) {
                     >
                         <div className="card-body">
                             <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 items-start md:items-stretch w-full mb-4 justify-between">
-                                <div className="btn-group my-auto">
-                                    <div
-                                        className="btn btn-info btn-outline"
-                                        onClick={() => {}}
-                                    >
-                                        Download Excel
-                                    </div>
-                                </div>
+                                <Link
+                                    className="btn btn-neutral my-auto"
+                                    href={route('payrolls.create')}
+                                >
+                                    Tambah
+                                </Link>
                                 <div className="flex flex-row md:space-x-4">
                                     <div>
                                         <label className="label">
@@ -143,9 +157,10 @@ export default function Reports(props) {
                                         <tr>
                                             <th>Tanggal</th>
                                             <th>Nama Karyawan</th>
-                                            <th>Kontak</th>
+                                            <th>Potongan</th>
+                                            <th>Bonus</th>
                                             <th>Total</th>
-                                            <th>Jumlah Item</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -155,23 +170,48 @@ export default function Reports(props) {
                                                     {formatDate(payroll.date)}
                                                 </th>
                                                 <td>{payroll.employee.name}</td>
-                                                <td>{payroll.employee.whatsapp}</td>
+                                                <td>
+                                                    {formatIDR(payroll.cuts)}
+                                                </td>
+                                                <td>
+                                                    {formatIDR(payroll.bonus)}
+                                                </td>
                                                 <td>
                                                     {formatIDR(payroll.recived)}
                                                 </td>
-                                                <td>
-                                                    {formatIDR(payroll.item_count)}
+                                                <td className="text-right">
+                                                    <Link
+                                                        className="btn btn-primary mx-1"
+                                                        href={route('payrolls.edit', payroll)}
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                    <div
+                                                        className="btn btn-secondary mx-1"
+                                                        onClick={() =>
+                                                            handleDelete(
+                                                                payroll
+                                                            )
+                                                        }
+                                                    >
+                                                        Delete
+                                                    </div>
                                                 </td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
                             </div>
-                            <Pagination links={links} />
+                            <Pagination links={links} params={params} />
                         </div>
                     </div>
                 </div>
             </div>
+            <ModalConfirm
+                isOpen={confirmModal.isOpen}
+                toggle={confirmModal.toggle}
+                onConfirm={onDelete}
+            />
         </Authenticated>
     )
 }

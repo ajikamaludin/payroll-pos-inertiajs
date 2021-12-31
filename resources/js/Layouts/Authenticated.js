@@ -53,7 +53,7 @@ export default function Authenticated({ auth, header, children }) {
                                 </NavLink>
                                 <NavLink
                                     href={route('payrolls.index')}
-                                    active={route().current('payrolls.index')}
+                                    active={route().current('payrolls.*')}
                                 >
                                     Gaji
                                 </NavLink>
@@ -188,7 +188,7 @@ export default function Authenticated({ auth, header, children }) {
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
                             href={route('payrolls.index')}
-                            active={route().current('payrolls.index')}
+                            active={route().current('payrolls.*')}
                         >
                             Gaji
                         </ResponsiveNavLink>

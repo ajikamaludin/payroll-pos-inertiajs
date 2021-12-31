@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import NumberFormat from 'react-number-format'
 import { useForm } from '@inertiajs/inertia-react'
 import { toast } from 'react-toastify'
 import { formatIDR } from '@/utils'
@@ -65,7 +64,7 @@ export default function FormEmployeeModal(props) {
         setData({
             name: employee?.name ? employee.name : '',
             whatsapp: employee?.whatsapp ? employee.whatsapp : '',
-            basic_salary: employee?.basic_salary ? formatIDR(employee.basic_salary) : '',
+            basic_salary: employee?.basic_salary ? formatIDR(employee.basic_salary) : 0,
             img_alt: employee?.photo_url ? employee.photo_url : null,
         })
     }, [employee])
@@ -121,25 +120,6 @@ export default function FormEmployeeModal(props) {
                         <span className="label-text-alt">
                             {errors.whatsapp}
                         </span>
-                    </label>
-                </div>
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Gaji Pokok</span>
-                    </label>
-                    <NumberFormat
-                        thousandSeparator={true}
-                        className={`input input-bordered ${
-                            errors.basic_salary ? 'input-error' : ''
-                        }`}
-                        value={data.basic_salary}
-                        thousandSeparator="."
-                        decimalSeparator=","
-                        onValueChange={({ value }) => setData('basic_salary', value)}
-                        placeholder="gaji pokok"
-                    />
-                    <label className="label">
-                        <span className="label-text-alt">{errors.basic_salary}</span>
                     </label>
                 </div>
                 <div className="form-control">

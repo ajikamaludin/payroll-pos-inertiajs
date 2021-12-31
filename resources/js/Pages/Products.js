@@ -14,7 +14,7 @@ import FormProductModal from '@/Modals/FormProductModal'
 export default function Products(props) {
     const { data: products, links } = props.products
 
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState(props._search)
     const preValue = usePrevious(search)
 
     const [product, setProduct] = useState(null)
@@ -90,7 +90,6 @@ export default function Products(props) {
                                 <table className="table w-full table-zebra">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
                                             <th>Nama</th>
                                             <th>Harga</th>
                                             <th>Deskripsi</th>
@@ -101,7 +100,6 @@ export default function Products(props) {
                                     <tbody>
                                         {products?.map((product) => (
                                             <tr key={product.id}>
-                                                <th>{product.id}</th>
                                                 <td>{product.name}</td>
                                                 <td>
                                                     {formatIDR(product.price)}
@@ -143,7 +141,7 @@ export default function Products(props) {
                                     </tbody>
                                 </table>
                             </div>
-                            <Pagination links={links} />
+                            <Pagination links={links} params={{ q: search }} />
                         </div>
                     </div>
                 </div>

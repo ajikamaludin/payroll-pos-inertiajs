@@ -6424,6 +6424,45 @@ function Button(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/Components/CloseIcon.js":
+/*!**********************************************!*\
+  !*** ./resources/js/Components/CloseIcon.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CloseIcon)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function CloseIcon(_ref) {
+  var onClick = _ref.onClick,
+      className = _ref.className;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: className,
+    onClick: onClick,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "h-6 w-6",
+      fill: "none",
+      viewBox: "0 0 24 24",
+      stroke: "currentColor",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M6 18L18 6M6 6l12 12"
+      })
+    })
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/Components/Dropdown.js":
 /*!*********************************************!*\
   !*** ./resources/js/Components/Dropdown.js ***!
@@ -6761,20 +6800,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
 var PageLink = function PageLink(_ref) {
   var active = _ref.active,
       label = _ref.label,
-      url = _ref.url;
+      url = _ref.url,
+      params = _ref.params;
   var className = "mr-1 mb-1 px-4 py-3 border border-solid border-gray-300 rounded text-sm bg-white hover:bg-white ".concat(active && 'focus:outline-none focus:border-indigo-700 focus:text-indigo-700 border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-400');
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+
+  var onClick = function onClick() {
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.get("".concat(url, "&").concat(qs__WEBPACK_IMPORTED_MODULE_1___default().stringify(params)), {}, {
+      replace: true,
+      preserveState: true
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: className,
-    href: url,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+    onClick: onClick,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
       dangerouslySetInnerHTML: {
         __html: label
       }
@@ -6788,7 +6839,7 @@ var PageLink = function PageLink(_ref) {
 var PageInactive = function PageInactive(_ref2) {
   var label = _ref2.label;
   var className = 'mr-1 mb-1 px-4 py-3 text-sm border rounded border-solid border-gray-300 text-gray';
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: className,
     dangerouslySetInnerHTML: {
       __html: label
@@ -6798,21 +6849,24 @@ var PageInactive = function PageInactive(_ref2) {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (_ref3) {
   var _ref3$links = _ref3.links,
-      links = _ref3$links === void 0 ? [] : _ref3$links;
+      links = _ref3$links === void 0 ? [] : _ref3$links,
+      _ref3$params = _ref3.params,
+      params = _ref3$params === void 0 ? null : _ref3$params;
   // dont render, if there's only 1 page (previous, 1, next)
   if (links.length === 3) return null;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "flex flex-wrap mt-6 -mb-1",
     children: links.map(function (_ref4) {
       var active = _ref4.active,
           label = _ref4.label,
           url = _ref4.url;
-      return url === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(PageInactive, {
+      return url === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PageInactive, {
         label: label
-      }, label) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(PageLink, {
+      }, label) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PageLink, {
         label: label,
         active: active,
-        url: url
+        url: url,
+        params: params
       }, label);
     })
   });
@@ -7057,7 +7111,7 @@ function Authenticated(_ref) {
                 children: "Users"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_NavLink__WEBPACK_IMPORTED_MODULE_4__["default"], {
                 href: route('payrolls.index'),
-                active: route().current('payrolls.index'),
+                active: route().current('payrolls.*'),
                 children: "Gaji"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_NavLink__WEBPACK_IMPORTED_MODULE_4__["default"], {
                 href: route('report'),
@@ -7156,7 +7210,7 @@ function Authenticated(_ref) {
             children: "Users"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_5__["default"], {
             href: route('payrolls.index'),
-            active: route().current('payrolls.index'),
+            active: route().current('payrolls.*'),
             children: "Gaji"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_5__["default"], {
             href: route('report'),
@@ -7268,14 +7322,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ FormEmployeeModal)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_number_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-number-format */ "./node_modules/react-number-format/dist/react-number-format.es.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/utils */ "./resources/js/utils.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/utils */ "./resources/js/utils.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -7283,15 +7333,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function FormEmployeeModal(props) {
-  var _jsx2;
-
   var isOpen = props.isOpen,
       _props$toggle = props.toggle,
       toggle = _props$toggle === void 0 ? function () {} : _props$toggle,
       _props$employee = props.employee,
       employee = _props$employee === void 0 ? null : _props$employee;
 
-  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.useForm)({
     name: '',
     whatsapp: '',
     basic_salary: 0,
@@ -7332,7 +7380,7 @@ function FormEmployeeModal(props) {
       post(route('employees.update', employee), {
         forceFormData: true,
         onSuccess: function onSuccess() {
-          return Promise.all([handleReset(), toggle(), react_toastify__WEBPACK_IMPORTED_MODULE_3__.toast.success('The Data has been changed')]);
+          return Promise.all([handleReset(), toggle(), react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success('The Data has been changed')]);
         }
       });
       return;
@@ -7340,7 +7388,7 @@ function FormEmployeeModal(props) {
 
     post(route('employees.store'), {
       onSuccess: function onSuccess() {
-        return Promise.all([handleReset(), toggle(), react_toastify__WEBPACK_IMPORTED_MODULE_3__.toast.success('The Data has been saved')]);
+        return Promise.all([handleReset(), toggle(), react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success('The Data has been saved')]);
       }
     });
   };
@@ -7349,103 +7397,81 @@ function FormEmployeeModal(props) {
     setData({
       name: employee !== null && employee !== void 0 && employee.name ? employee.name : '',
       whatsapp: employee !== null && employee !== void 0 && employee.whatsapp ? employee.whatsapp : '',
-      basic_salary: employee !== null && employee !== void 0 && employee.basic_salary ? (0,_utils__WEBPACK_IMPORTED_MODULE_4__.formatIDR)(employee.basic_salary) : '',
+      basic_salary: employee !== null && employee !== void 0 && employee.basic_salary ? (0,_utils__WEBPACK_IMPORTED_MODULE_3__.formatIDR)(employee.basic_salary) : 0,
       img_alt: employee !== null && employee !== void 0 && employee.photo_url ? employee.photo_url : null
     });
   }, [employee]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "modal",
     style: isOpen ? {
       opacity: 1,
       pointerEvents: 'auto',
       visibility: 'visible'
     } : {},
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "modal-box",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
         className: "font-bold text-2xl pb-8",
         children: "Barang"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
           className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "label-text",
             children: "Nama"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
           type: "text",
           placeholder: "nama",
           className: "input input-bordered ".concat(errors.name && 'input-error'),
           name: "name",
           value: data.name,
           onChange: handleOnChange
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
           className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "label-text-alt",
             children: errors.name
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
           className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "label-text",
             children: "Whatsapp"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
           type: "text",
           placeholder: "whatsapp",
           className: "input input-bordered ".concat(errors.whatsapp && 'input-error'),
           name: "whatsapp",
           value: data.whatsapp,
           onChange: handleOnChange
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
           className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "label-text-alt",
             children: errors.whatsapp
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
           className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-            className: "label-text",
-            children: "Gaji Pokok"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx2 = {
-          thousandSeparator: true,
-          className: "input input-bordered ".concat(errors.basic_salary ? 'input-error' : ''),
-          value: data.basic_salary
-        }, _defineProperty(_jsx2, "thousandSeparator", "."), _defineProperty(_jsx2, "decimalSeparator", ","), _defineProperty(_jsx2, "onValueChange", function onValueChange(_ref) {
-          var value = _ref.value;
-          return setData('basic_salary', value);
-        }), _defineProperty(_jsx2, "placeholder", "gaji pokok"), _jsx2)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-            className: "label-text-alt",
-            children: errors.basic_salary
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "label-text",
             children: "Foto"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "input input-bordered ".concat(errors.photo && 'input-error'),
           onClick: function onClick() {
             console.log(inputPhoto.current.click());
           },
           children: data.photo ? data.photo.name : ''
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
           ref: inputPhoto,
           type: "file",
           className: "hidden",
@@ -7454,329 +7480,26 @@ function FormEmployeeModal(props) {
             return setData('photo', e.target.files[0]);
           },
           accept: "image/png, image/jpeg, image/jpg"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
           className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "label-text-alt",
             children: errors.photo
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "form-control",
-        children: data.img_alt !== null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+        children: data.img_alt !== null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           src: data.img_alt
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "modal-action",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           onClick: handleSubmit,
           className: "btn btn-primary",
           disabled: processing,
           children: "Simpan"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          onClick: handleCancel,
-          className: "btn btn-secondary",
-          disabled: processing,
-          children: "Batal"
-        })]
-      })]
-    })
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/Modals/FormPayrollModal.js":
-/*!*************************************************!*\
-  !*** ./resources/js/Modals/FormPayrollModal.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ FormPayrollModal)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_number_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-number-format */ "./node_modules/react-number-format/dist/react-number-format.es.js");
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var _Selects_EmployeeSelectInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Selects/EmployeeSelectInput */ "./resources/js/Selects/EmployeeSelectInput.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/utils */ "./resources/js/utils.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-
-
-
-function FormPayrollModal(props) {
-  var _jsx2, _jsx3, _jsx4, _jsx5;
-
-  var isOpen = props.isOpen,
-      _props$toggle = props.toggle,
-      toggle = _props$toggle === void 0 ? function () {} : _props$toggle,
-      _props$payroll = props.payroll,
-      payroll = _props$payroll === void 0 ? null : _props$payroll;
-
-  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-    employee_id: null,
-    employee_name: '',
-    date: new Date(),
-    amount: 0,
-    cuts: 0,
-    bonus: 0,
-    item_count: 0
-  }),
-      data = _useForm.data,
-      setData = _useForm.setData,
-      post = _useForm.post,
-      put = _useForm.put,
-      processing = _useForm.processing,
-      errors = _useForm.errors,
-      reset = _useForm.reset,
-      clearErrors = _useForm.clearErrors;
-
-  var recived = +data.amount + +data.bonus - +data.cuts;
-
-  var handleSelectedEmployee = function handleSelectedEmployee(employee) {
-    setData(_objectSpread(_objectSpread({}, data), {}, {
-      employee_id: employee.id,
-      employee_name: employee.name,
-      amount: employee.basic_salary
-    }));
-  };
-
-  var handleReset = function handleReset() {
-    setData({
-      employee_id: null,
-      employee_name: '',
-      date: new Date(),
-      amount: 0,
-      cuts: 0,
-      bonus: 0,
-      item_count: 0
-    });
-    clearErrors();
-  };
-
-  var handleCancel = function handleCancel() {
-    handleReset();
-    toggle();
-  };
-
-  var handleSubmit = function handleSubmit() {
-    if (payroll !== null) {
-      put(route('payrolls.update', payroll), {
-        onSuccess: function onSuccess() {
-          return Promise.all([handleReset(), toggle(), react_toastify__WEBPACK_IMPORTED_MODULE_3__.toast.success('The Data has been changed')]);
-        }
-      });
-      return;
-    }
-
-    post(route('payrolls.store'), {
-      onSuccess: function onSuccess() {
-        return Promise.all([handleReset(), toggle(), react_toastify__WEBPACK_IMPORTED_MODULE_3__.toast.success('The Data has been saved')]);
-      }
-    });
-  };
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var _payroll$employee, _payroll$employee2;
-
-    setData({
-      employee_id: payroll === null || payroll === void 0 ? void 0 : (_payroll$employee = payroll.employee) === null || _payroll$employee === void 0 ? void 0 : _payroll$employee.id,
-      employee_name: payroll === null || payroll === void 0 ? void 0 : (_payroll$employee2 = payroll.employee) === null || _payroll$employee2 === void 0 ? void 0 : _payroll$employee2.name,
-      date: payroll !== null && payroll !== void 0 && payroll.date ? new Date(payroll.date) : new Date(),
-      amount: payroll !== null && payroll !== void 0 && payroll.amount ? payroll.amount : 0,
-      cuts: payroll !== null && payroll !== void 0 && payroll.cuts ? payroll.cuts : 0,
-      bonus: payroll !== null && payroll !== void 0 && payroll.bonus ? payroll.bonus : 0,
-      item_count: payroll !== null && payroll !== void 0 && payroll.item_count ? payroll.item_count : 0
-    });
-  }, [payroll]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-    className: "modal",
-    style: isOpen ? {
-      opacity: 1,
-      pointerEvents: 'auto',
-      visibility: 'visible',
-      overflowY: 'initial'
-    } : {},
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-      className: "modal-box overflow-y-auto max-h-screen",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
-        className: "font-bold text-2xl pb-8",
-        children: "Gaji"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text",
-            children: "Tanggal"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_7___default()), {
-          selected: data.date,
-          onChange: function onChange(date) {
-            return setData('date', date);
-          },
-          format: "dd/mm/yyyy",
-          className: "input input-bordered ".concat(errors.date ? 'input-error' : ''),
-          nextMonthButtonLabel: ">",
-          previousMonthButtonLabel: "<"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text-alt",
-            children: errors.date
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text",
-            children: "Keryawan"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Selects_EmployeeSelectInput__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          value: data.employee_name,
-          onItemSelected: handleSelectedEmployee,
-          invalid: errors.employee_id ? true : false
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text-alt",
-            children: errors.employee_id
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text",
-            children: "Gaji Pokok"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx2 = {
-          thousandSeparator: true,
-          className: "input input-bordered ".concat(errors.amount ? 'input-error' : ''),
-          value: (0,_utils__WEBPACK_IMPORTED_MODULE_5__.formatIDR)(data.amount)
-        }, _defineProperty(_jsx2, "thousandSeparator", "."), _defineProperty(_jsx2, "decimalSeparator", ","), _defineProperty(_jsx2, "onValueChange", function onValueChange(_ref) {
-          var value = _ref.value;
-          return setData('amount', value);
-        }), _defineProperty(_jsx2, "placeholder", "gaji pokok"), _jsx2)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text-alt",
-            children: errors.amount
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text",
-            children: "Potongan"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx3 = {
-          thousandSeparator: true,
-          className: "input input-bordered ".concat(errors.cuts ? 'input-error' : ''),
-          value: (0,_utils__WEBPACK_IMPORTED_MODULE_5__.formatIDR)(data.cuts)
-        }, _defineProperty(_jsx3, "thousandSeparator", "."), _defineProperty(_jsx3, "decimalSeparator", ","), _defineProperty(_jsx3, "onValueChange", function onValueChange(_ref2) {
-          var value = _ref2.value;
-          return setData('cuts', value);
-        }), _defineProperty(_jsx3, "placeholder", "potongan"), _jsx3)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text-alt",
-            children: errors.cuts
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text",
-            children: "Bonus"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx4 = {
-          thousandSeparator: true,
-          className: "input input-bordered ".concat(errors.bonus ? 'input-error' : ''),
-          value: (0,_utils__WEBPACK_IMPORTED_MODULE_5__.formatIDR)(data.bonus)
-        }, _defineProperty(_jsx4, "thousandSeparator", "."), _defineProperty(_jsx4, "decimalSeparator", ","), _defineProperty(_jsx4, "onValueChange", function onValueChange(_ref3) {
-          var value = _ref3.value;
-          return setData('bonus', value);
-        }), _defineProperty(_jsx4, "placeholder", "bonus"), _jsx4)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text-alt",
-            children: errors.bonus
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text",
-            children: "Total"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
-          value: (0,_utils__WEBPACK_IMPORTED_MODULE_5__.formatIDR)(recived),
-          className: "input input-bordered",
-          readOnly: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text-alt",
-            children: errors.recived
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "form-control",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text",
-            children: "Jumlah Item"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx5 = {
-          thousandSeparator: true,
-          className: "input input-bordered ".concat(errors.item_count ? 'input-error' : ''),
-          value: data.item_count
-        }, _defineProperty(_jsx5, "thousandSeparator", "."), _defineProperty(_jsx5, "decimalSeparator", ","), _defineProperty(_jsx5, "onValueChange", function onValueChange(_ref4) {
-          var value = _ref4.value;
-          return setData('item_count', value);
-        }), _defineProperty(_jsx5, "placeholder", "jumlah item"), _jsx5)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-          className: "label",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "label-text-alt",
-            children: errors.item_count
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "modal-action",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-          onClick: handleSubmit,
-          className: "btn btn-primary",
-          disabled: processing,
-          children: "Simpan"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           onClick: handleCancel,
           className: "btn btn-secondary",
           disabled: processing,
@@ -9056,7 +8779,10 @@ function Employees(props) {
                 })]
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_Pagination__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              links: links
+              links: links,
+              params: {
+                q: search
+              }
             })]
           })
         })
@@ -9075,10 +8801,796 @@ function Employees(props) {
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Payrolls.js":
-/*!****************************************!*\
-  !*** ./resources/js/Pages/Payrolls.js ***!
-  \****************************************/
+/***/ "./resources/js/Pages/Payrolls/Create.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Pages/Payrolls/Create.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Create)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var react_number_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-number-format */ "./node_modules/react-number-format/dist/react-number-format.es.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var react_use__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-use */ "./node_modules/react-use/esm/usePrevious.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
+/* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.js");
+/* harmony import */ var _Components_CloseIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Components/CloseIcon */ "./resources/js/Components/CloseIcon.js");
+/* harmony import */ var _Selects_EmployeeSelectInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Selects/EmployeeSelectInput */ "./resources/js/Selects/EmployeeSelectInput.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/utils */ "./resources/js/utils.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Create(props) {
+  var _jsx2, _jsx3, _jsx4;
+
+  var _props$products = props.products,
+      products = _props$products.data,
+      links = _props$products.links;
+  var _search = props._search,
+      _page = props._page;
+
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.useForm)({
+    date: new Date(),
+    employee_id: null,
+    employee_name: '',
+    cuts: 0,
+    bonus: 0,
+    items: []
+  }),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      post = _useForm.post,
+      errors = _useForm.errors,
+      processing = _useForm.processing;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      loading = _useState2[0],
+      setLoading = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_search),
+      _useState4 = _slicedToArray(_useState3, 2),
+      search = _useState4[0],
+      setSearch = _useState4[1];
+
+  var preValue = (0,react_use__WEBPACK_IMPORTED_MODULE_11__["default"])(search);
+
+  var handleSelectedEmployee = function handleSelectedEmployee(employee) {
+    setData(_objectSpread(_objectSpread({}, data), {}, {
+      employee_id: employee.id,
+      employee_name: "".concat(employee.name, " - ").concat(employee.whatsapp)
+    }));
+  };
+
+  var addItem = function addItem(product) {
+    var itemExist = data.items.find(function (item) {
+      return item.id === product.id;
+    });
+
+    if (itemExist) {
+      setData('items', data.items.map(function (item) {
+        if (item.id === product.id) {
+          return _objectSpread(_objectSpread({}, item), {}, {
+            quantity: +item.quantity + 1
+          });
+        } else {
+          return item;
+        }
+      }));
+      return;
+    }
+
+    setData('items', data.items.concat(_objectSpread(_objectSpread({}, product), {}, {
+      product_id: product.id,
+      quantity: 1
+    })));
+  };
+
+  var remoteItem = function remoteItem(product) {
+    setData('items', data.items.filter(function (item) {
+      return item.id !== product.id;
+    }));
+  };
+
+  var handleReset = function handleReset() {
+    setData({
+      employee_id: null,
+      employee_name: '',
+      cuts: 0,
+      bonus: 0,
+      items: []
+    });
+  };
+
+  var handleSubmit = function handleSubmit() {
+    if (data.items.length <= 0) {
+      alert('barang belum di pilih');
+      return;
+    }
+
+    post(route('payrolls.store'), {
+      onSuccess: function onSuccess() {
+        return Promise.all([handleReset(), react_toastify__WEBPACK_IMPORTED_MODULE_3__.toast.success('The Data has been saved')]);
+      }
+    });
+  };
+
+  var itemAmount = data.items.reduce(function (amt, item) {
+    return amt + +item.quantity * +item.price;
+  }, 0);
+  var totalAmount = itemAmount - +data.cuts + +data.bonus;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (preValue) {
+      setLoading(true);
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(route(route().current()), {
+        q: search,
+        page: _page
+      }, {
+        replace: true,
+        preserveState: true,
+        onSuccess: function onSuccess() {
+          setLoading(false);
+        }
+      });
+    }
+  }, [search]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    auth: props.auth,
+    errors: props.errors,
+    header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h2", {
+      className: "font-semibold text-xl text-gray-800 leading-tight",
+      children: "Gaji"
+    }),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.Head, {
+      title: "Payrolls"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+      className: "py-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        className: "flex flex-col md:flex-row w-full sm:px-6 lg:px-8 space-y-4 md:space-x-4 md:space-y-0",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          className: "card bg-white w-full md:w-2/3",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+            className: "p-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              className: "flex flex-row justify-end mb-2",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                className: "form-control",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("input", {
+                  type: "text",
+                  className: "input input-bordered",
+                  value: search,
+                  onChange: function onChange(e) {
+                    return setSearch(e.target.value);
+                  },
+                  placeholder: "Search"
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              className: "grid grid-cols-4 gap-4 ".concat(loading && 'opacity-70'),
+              children: products.map(function (product) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                  className: "rounded bg-white shadow-md",
+                  onClick: function onClick() {
+                    return addItem(product);
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("img", {
+                    src: product.photo_url,
+                    style: {
+                      height: '100px'
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                    className: "p-4 flex flex-col justify-items-center items-center space-y-4",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                      className: "font-bold text-center",
+                      children: product.name
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                      className: "badge",
+                      children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(product.price)
+                    })]
+                  })]
+                }, product.id);
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              className: "flex flex-col items-center",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_Pagination__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                  links: links,
+                  params: {
+                    q: search
+                  }
+                })
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          className: "card bg-white w-full md:w-1/3",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+            className: "flex flex-col p-2 mb-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_12___default()), {
+                selected: data.date,
+                onChange: function onChange(date) {
+                  return setData('date', date);
+                },
+                format: "dd/mm/yyyy",
+                className: "input input-bordered ".concat(errors.date ? 'input-error' : ''),
+                nextMonthButtonLabel: ">",
+                previousMonthButtonLabel: "<"
+              }), errors.date && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                className: "label",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                  className: "label-text-alt",
+                  children: errors.date
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              className: "w-full",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Selects_EmployeeSelectInput__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                value: data.employee_name,
+                onItemSelected: handleSelectedEmployee,
+                invalid: errors.employee_id ? true : false
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                className: "label",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                  className: "label-text-alt",
+                  children: errors.employee_id
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              className: "overflow-x-auto",
+              style: {
+                minHeight: '280px'
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("table", {
+                className: "table w-full",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("thead", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+                      children: "Barang"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+                      children: "Qty"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+                      children: "Subtotal"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {})]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("tbody", {
+                  children: data.items.map(function (item) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                        children: item.name
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(item.quantity)
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(item.quantity * item.price)
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_CloseIcon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                          className: "btn btn-outline btn-sm px-0.5",
+                          onClick: function onClick() {
+                            return remoteItem(item);
+                          }
+                        })
+                      })]
+                    }, item.id);
+                  })
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              className: "card-actions",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "form-control w-full",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("label", {
+                  className: "input-group w-full",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    children: "Potongan"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx2 = {
+                    thousandSeparator: true,
+                    className: "input input-bordered w-full text-right ".concat(errors.cuts ? 'input-error' : ''),
+                    value: data.cuts
+                  }, _defineProperty(_jsx2, "thousandSeparator", "."), _defineProperty(_jsx2, "decimalSeparator", ","), _defineProperty(_jsx2, "onValueChange", function onValueChange(_ref) {
+                    var value = _ref.value;
+                    return setData('cuts', value);
+                  }), _defineProperty(_jsx2, "placeholder", "potongan"), _jsx2))]
+                }), errors.cuts && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                  className: "label",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    className: "label-text-alt",
+                    children: errors.cuts
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "form-control w-full",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("label", {
+                  className: "input-group w-full",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    children: "Bonus"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx3 = {
+                    thousandSeparator: true,
+                    className: "input input-bordered w-full text-right ".concat(errors.bonus ? 'input-error' : ''),
+                    value: data.bonus
+                  }, _defineProperty(_jsx3, "thousandSeparator", "."), _defineProperty(_jsx3, "decimalSeparator", ","), _defineProperty(_jsx3, "onValueChange", function onValueChange(_ref2) {
+                    var value = _ref2.value;
+                    return setData('bonus', value);
+                  }), _defineProperty(_jsx3, "placeholder", "bonus"), _jsx3))]
+                }), errors.bonus && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                  className: "label",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    className: "label-text-alt",
+                    children: errors.bonus
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                className: "form-control w-full mt-2",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("label", {
+                  className: "input-group w-full",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    children: "Total"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx4 = {
+                    thousandSeparator: true,
+                    className: "input input-bordered w-full text-right",
+                    value: totalAmount
+                  }, _defineProperty(_jsx4, "thousandSeparator", "."), _defineProperty(_jsx4, "decimalSeparator", ","), _defineProperty(_jsx4, "readOnly", true), _defineProperty(_jsx4, "placeholder", "total"), _jsx4))]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "grid grid-cols-2 gap-2 w-full",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                  className: "btn btn-primary",
+                  disabled: processing,
+                  onClick: handleSubmit,
+                  children: "Simpan"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                  className: "btn btn-primary",
+                  disabled: processing,
+                  children: "Cetak"
+                })]
+              })]
+            })]
+          })
+        })]
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Payrolls/Edit.js":
+/*!*********************************************!*\
+  !*** ./resources/js/Pages/Payrolls/Edit.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var react_number_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-number-format */ "./node_modules/react-number-format/dist/react-number-format.es.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var react_use__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-use */ "./node_modules/react-use/esm/usePrevious.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
+/* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.js");
+/* harmony import */ var _Components_CloseIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Components/CloseIcon */ "./resources/js/Components/CloseIcon.js");
+/* harmony import */ var _Selects_EmployeeSelectInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Selects/EmployeeSelectInput */ "./resources/js/Selects/EmployeeSelectInput.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/utils */ "./resources/js/utils.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Edit(props) {
+  var _jsx2, _jsx3, _jsx4;
+
+  var _props$products = props.products,
+      products = _props$products.data,
+      links = _props$products.links;
+  var payroll = props.payroll,
+      _search = props._search,
+      _page = props._page;
+
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.useForm)({
+    date: new Date(payroll.date),
+    employee_id: payroll.employee_id,
+    employee_name: "".concat(payroll.employee.name, " - ").concat(payroll.employee.whatsapp),
+    cuts: payroll.cuts,
+    bonus: payroll.bonus,
+    items: payroll.items.map(function (item) {
+      return _objectSpread({
+        product_id: item.product_id,
+        quantity: item.quantity
+      }, item.product);
+    })
+  }),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      put = _useForm.put,
+      errors = _useForm.errors,
+      processing = _useForm.processing;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      loading = _useState2[0],
+      setLoading = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_search),
+      _useState4 = _slicedToArray(_useState3, 2),
+      search = _useState4[0],
+      setSearch = _useState4[1];
+
+  var preValue = (0,react_use__WEBPACK_IMPORTED_MODULE_11__["default"])(search);
+
+  var handleSelectedEmployee = function handleSelectedEmployee(employee) {
+    setData(_objectSpread(_objectSpread({}, data), {}, {
+      employee_id: employee.id,
+      employee_name: "".concat(employee.name, " - ").concat(employee.whatsapp)
+    }));
+  };
+
+  var addItem = function addItem(product) {
+    var itemExist = data.items.find(function (item) {
+      return item.id === product.id;
+    });
+
+    if (itemExist) {
+      setData('items', data.items.map(function (item) {
+        if (item.id === product.id) {
+          return _objectSpread(_objectSpread({}, item), {}, {
+            quantity: +item.quantity + 1
+          });
+        } else {
+          return item;
+        }
+      }));
+      return;
+    }
+
+    setData('items', data.items.concat(_objectSpread(_objectSpread({}, product), {}, {
+      product_id: product.id,
+      quantity: 1
+    })));
+  };
+
+  var remoteItem = function remoteItem(product) {
+    setData('items', data.items.filter(function (item) {
+      return item.id !== product.id;
+    }));
+  };
+
+  var handleReset = function handleReset() {
+    setData({
+      employee_id: null,
+      employee_name: '',
+      cuts: 0,
+      bonus: 0,
+      items: []
+    });
+  };
+
+  var handleSubmit = function handleSubmit() {
+    if (data.items.length <= 0) {
+      alert('barang belum di pilih');
+      return;
+    }
+
+    put(route('payrolls.update', payroll), {
+      onSuccess: function onSuccess() {
+        return Promise.all([handleReset(), react_toastify__WEBPACK_IMPORTED_MODULE_3__.toast.success('The Data has been saved')]);
+      }
+    });
+  };
+
+  var itemAmount = data.items.reduce(function (amt, item) {
+    return amt + +item.quantity * +item.price;
+  }, 0);
+  var totalAmount = itemAmount - +data.cuts + +data.bonus;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (preValue) {
+      setLoading(true);
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(route(route().current(), payroll), {
+        q: search,
+        page: _page
+      }, {
+        replace: true,
+        preserveState: true,
+        onSuccess: function onSuccess() {
+          setLoading(false);
+        }
+      });
+    }
+  }, [search]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    auth: props.auth,
+    errors: props.errors,
+    header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h2", {
+      className: "font-semibold text-xl text-gray-800 leading-tight",
+      children: "Gaji"
+    }),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.Head, {
+      title: "Payrolls"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+      className: "py-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        className: "flex flex-col md:flex-row w-full sm:px-6 lg:px-8 space-y-4 md:space-x-4 md:space-y-0",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          className: "card bg-white w-full md:w-2/3",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+            className: "p-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              className: "flex flex-row justify-end mb-2",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                className: "form-control",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("input", {
+                  type: "text",
+                  className: "input input-bordered",
+                  value: search,
+                  onChange: function onChange(e) {
+                    return setSearch(e.target.value);
+                  },
+                  placeholder: "Search"
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              className: "grid grid-cols-4 gap-4 ".concat(loading && 'opacity-70'),
+              children: products.map(function (product) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                  className: "rounded bg-white shadow-md",
+                  onClick: function onClick() {
+                    return addItem(product);
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("img", {
+                    src: product.photo_url,
+                    style: {
+                      height: '100px'
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                    className: "p-4 flex flex-col justify-items-center items-center space-y-4",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                      className: "font-bold text-center",
+                      children: product.name
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                      className: "badge",
+                      children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(product.price)
+                    })]
+                  })]
+                }, product.id);
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              className: "flex flex-col items-center",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_Pagination__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                  links: links,
+                  params: {
+                    q: search
+                  }
+                })
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          className: "card bg-white w-full md:w-1/3",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+            className: "flex flex-col p-2 mb-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_12___default()), {
+                selected: data.date,
+                onChange: function onChange(date) {
+                  return setData('date', date);
+                },
+                format: "dd/mm/yyyy",
+                className: "input input-bordered ".concat(errors.date ? 'input-error' : ''),
+                nextMonthButtonLabel: ">",
+                previousMonthButtonLabel: "<"
+              }), errors.date && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                className: "label",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                  className: "label-text-alt",
+                  children: errors.date
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              className: "w-full",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Selects_EmployeeSelectInput__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                value: data.employee_name,
+                onItemSelected: handleSelectedEmployee,
+                invalid: errors.employee_id ? true : false
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                className: "label",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                  className: "label-text-alt",
+                  children: errors.employee_id
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              className: "overflow-x-auto",
+              style: {
+                minHeight: '280px'
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("table", {
+                className: "table w-full",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("thead", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+                      children: "Barang"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+                      children: "Qty"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+                      children: "Subtotal"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {})]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("tbody", {
+                  children: data.items.map(function (item) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                        children: item.name
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(item.quantity)
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(item.quantity * item.price)
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_CloseIcon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                          className: "btn btn-outline btn-sm px-0.5",
+                          onClick: function onClick() {
+                            return remoteItem(item);
+                          }
+                        })
+                      })]
+                    }, item.id);
+                  })
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              className: "card-actions",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "form-control w-full",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("label", {
+                  className: "input-group w-full",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    children: "Potongan"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx2 = {
+                    thousandSeparator: true,
+                    className: "input input-bordered w-full text-right ".concat(errors.cuts ? 'input-error' : ''),
+                    value: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(data.cuts)
+                  }, _defineProperty(_jsx2, "thousandSeparator", "."), _defineProperty(_jsx2, "decimalSeparator", ","), _defineProperty(_jsx2, "onValueChange", function onValueChange(_ref) {
+                    var value = _ref.value;
+                    return setData('cuts', value);
+                  }), _defineProperty(_jsx2, "placeholder", "potongan"), _jsx2))]
+                }), errors.cuts && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                  className: "label",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    className: "label-text-alt",
+                    children: errors.cuts
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "form-control w-full",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("label", {
+                  className: "input-group w-full",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    children: "Bonus"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx3 = {
+                    thousandSeparator: true,
+                    className: "input input-bordered w-full text-right ".concat(errors.bonus ? 'input-error' : ''),
+                    value: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(data.bonus)
+                  }, _defineProperty(_jsx3, "thousandSeparator", "."), _defineProperty(_jsx3, "decimalSeparator", ","), _defineProperty(_jsx3, "onValueChange", function onValueChange(_ref2) {
+                    var value = _ref2.value;
+                    return setData('bonus', value);
+                  }), _defineProperty(_jsx3, "placeholder", "bonus"), _jsx3))]
+                }), errors.bonus && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                  className: "label",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    className: "label-text-alt",
+                    children: errors.bonus
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                className: "form-control w-full mt-2",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("label", {
+                  className: "input-group w-full",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                    children: "Total"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx4 = {
+                    thousandSeparator: true,
+                    className: "input input-bordered w-full text-right",
+                    value: totalAmount
+                  }, _defineProperty(_jsx4, "thousandSeparator", "."), _defineProperty(_jsx4, "decimalSeparator", ","), _defineProperty(_jsx4, "readOnly", true), _defineProperty(_jsx4, "placeholder", "total"), _jsx4))]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "grid grid-cols-2 gap-2 w-full",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                  className: "btn btn-primary",
+                  disabled: processing,
+                  onClick: handleSubmit,
+                  children: "Simpan"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                  className: "btn btn-primary",
+                  disabled: processing,
+                  children: "Cetak"
+                })]
+              })]
+            })]
+          })
+        })]
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Payrolls/Index.js":
+/*!**********************************************!*\
+  !*** ./resources/js/Pages/Payrolls/Index.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9087,14 +9599,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Payrolls)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var _Hooks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Hooks */ "./resources/js/Hooks/index.js");
-/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
-/* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.js");
-/* harmony import */ var _Components_ModalConfirm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Components/ModalConfirm */ "./resources/js/Components/ModalConfirm.js");
-/* harmony import */ var _Modals_FormPayrollModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Modals/FormPayrollModal */ "./resources/js/Modals/FormPayrollModal.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var react_use__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-use */ "./node_modules/react-use/esm/usePrevious.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var _Hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Hooks */ "./resources/js/Hooks/index.js");
+/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
+/* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.js");
+/* harmony import */ var _Components_ModalConfirm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Components/ModalConfirm */ "./resources/js/Components/ModalConfirm.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/utils */ "./resources/js/utils.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -9121,25 +9637,27 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function Payrolls(props) {
   var _props$payrolls = props.payrolls,
       payrolls = _props$payrolls.data,
       links = _props$payrolls.links;
+  var _startDate = props._startDate,
+      _endDate = props._endDate;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_startDate ? new Date(_startDate) : new Date()),
       _useState2 = _slicedToArray(_useState, 2),
-      payroll = _useState2[0],
-      setPayroll = _useState2[1];
+      startDate = _useState2[0],
+      setStartDate = _useState2[1];
 
-  var formModal = (0,_Hooks__WEBPACK_IMPORTED_MODULE_4__.useModalState)(false);
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_endDate ? new Date(_endDate) : new Date()),
+      _useState4 = _slicedToArray(_useState3, 2),
+      endDate = _useState4[0],
+      setEndDate = _useState4[1];
 
-  var toggle = function toggle() {
-    var payroll = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    setPayroll(payroll);
-    formModal.toggle();
-  };
-
-  var confirmModal = (0,_Hooks__WEBPACK_IMPORTED_MODULE_4__.useModalState)(false);
+  var preValue = (0,react_use__WEBPACK_IMPORTED_MODULE_11__["default"])("".concat(startDate, "-").concat(endDate));
+  var confirmModal = (0,_Hooks__WEBPACK_IMPORTED_MODULE_5__.useModalState)(false);
 
   var handleDelete = function handleDelete(payroll) {
     confirmModal.setData(payroll);
@@ -9150,22 +9668,34 @@ function Payrolls(props) {
     var payroll = confirmModal.data;
 
     if (payroll != null) {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"](route('payrolls.destroy', payroll), {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia["delete"](route('payrolls.destroy', payroll), {
         onSuccess: function onSuccess() {
-          return react_toastify__WEBPACK_IMPORTED_MODULE_3__.toast.success('The Data has been deleted');
+          return react_toastify__WEBPACK_IMPORTED_MODULE_4__.toast.success('The Data has been deleted');
         }
       });
     }
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  var params = {
+    startDate: moment__WEBPACK_IMPORTED_MODULE_1___default()(startDate).format('yyyy-MM-DD'),
+    endDate: moment__WEBPACK_IMPORTED_MODULE_1___default()(endDate).format('yyyy-MM-DD')
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (preValue) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.get(route(route().current()), params, {
+        replace: true,
+        preserveState: true
+      });
+    }
+  }, [startDate, endDate]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_6__["default"], {
     auth: props.auth,
     errors: props.errors,
     header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h2", {
       className: "font-semibold text-xl text-gray-800 leading-tight",
       children: "Gaji"
     }),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Head, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
       title: "Payroll"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
       className: "py-12",
@@ -9173,17 +9703,91 @@ function Payrolls(props) {
         className: "flex flex-col w-full sm:px-6 lg:px-8 space-y-2",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "card bg-white w-full",
+          style: {
+            minHeight: '400px'
+          },
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
             className: "card-body",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-              className: "flex w-full mb-4 justify-between",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-                className: "btn btn-neutral",
-                onClick: function onClick() {
-                  return toggle();
-                },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              className: "flex flex-col md:flex-row space-y-2 md:space-y-0 items-start md:items-stretch w-full mb-4 justify-between",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                className: "btn btn-neutral my-auto",
+                href: route('payrolls.create'),
                 children: "Tambah"
-              })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "flex flex-row md:space-x-4",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                    className: "label",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                      className: "label-text",
+                      children: "Tanggal Awal"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                    className: "relative",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_12___default()), {
+                      selected: startDate,
+                      onChange: function onChange(date) {
+                        setStartDate(date);
+                      },
+                      format: "dd/mm/yyyy",
+                      className: "input input-bordered",
+                      nextMonthButtonLabel: ">",
+                      previousMonthButtonLabel: "<"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                      className: "absolute right-2.5 rounded-l-none y-0 flex items-center top-2.5",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("svg", {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        className: "h-6 w-6",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("path", {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        })
+                      })
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                    className: "label",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                      className: "label-text",
+                      children: "Tanggal Akhir"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                    className: "relative",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_12___default()), {
+                      selected: endDate,
+                      onChange: function onChange(date) {
+                        setEndDate(date);
+                      },
+                      format: "dd/mm/yyyy",
+                      className: "input input-bordered",
+                      nextMonthButtonLabel: ">",
+                      previousMonthButtonLabel: "<"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                      className: "absolute right-2.5 rounded-l-none y-0 flex items-center top-2.5",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("svg", {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        className: "h-6 w-6",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("path", {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        })
+                      })
+                    })]
+                  })]
+                })]
+              })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "overflow-x-auto",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("table", {
@@ -9195,11 +9799,11 @@ function Payrolls(props) {
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
                       children: "Nama Karyawan"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-                      children: "Gaji"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
                       children: "Potongan"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
                       children: "Bonus"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+                      children: "Total"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {})]
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("tbody", {
@@ -9210,18 +9814,16 @@ function Payrolls(props) {
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
                         children: payroll.employee.name
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
-                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(payroll.amount)
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
                         children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(payroll.cuts)
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
                         children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(payroll.bonus)
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(payroll.recived)
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("td", {
                         className: "text-right",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
                           className: "btn btn-primary mx-1",
-                          onClick: function onClick() {
-                            return toggle(payroll);
-                          },
+                          href: route('payrolls.edit', payroll),
                           children: "Edit"
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                           className: "btn btn-secondary mx-1",
@@ -9235,17 +9837,14 @@ function Payrolls(props) {
                   })
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_Pagination__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              links: links
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_Pagination__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              links: links,
+              params: params
             })]
           })
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Modals_FormPayrollModal__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      isOpen: formModal.isOpen,
-      toggle: toggle,
-      payroll: payroll
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_ModalConfirm__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_ModalConfirm__WEBPACK_IMPORTED_MODULE_8__["default"], {
       isOpen: confirmModal.isOpen,
       toggle: confirmModal.toggle,
       onConfirm: onDelete
@@ -9308,7 +9907,7 @@ function Products(props) {
       products = _props$products.data,
       links = _props$products.links;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props._search),
       _useState2 = _slicedToArray(_useState, 2),
       search = _useState2[0],
       setSearch = _useState2[1];
@@ -9401,8 +10000,6 @@ function Products(props) {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("thead", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-                      children: "Id"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
                       children: "Nama"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
                       children: "Harga"
@@ -9415,9 +10012,7 @@ function Products(props) {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("tbody", {
                   children: products === null || products === void 0 ? void 0 : products.map(function (product) {
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-                        children: product.id
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
                         children: product.name
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
                         children: (0,_utils__WEBPACK_IMPORTED_MODULE_5__.formatIDR)(product.price)
@@ -9449,7 +10044,10 @@ function Products(props) {
                 })]
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_Pagination__WEBPACK_IMPORTED_MODULE_7__["default"], {
-              links: links
+              links: links,
+              params: {
+                q: search
+              }
             })]
           })
         })
@@ -9477,31 +10075,216 @@ function Products(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Report)
+/* harmony export */   "default": () => (/* binding */ Reports)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var react_use__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-use */ "./node_modules/react-use/esm/usePrevious.js");
+/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
+/* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/utils */ "./resources/js/utils.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
-function Report(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
+
+
+
+
+
+
+
+function Reports(props) {
+  var _props$payrolls = props.payrolls,
+      payrolls = _props$payrolls.data,
+      links = _props$payrolls.links;
+  var _startDate = props._startDate,
+      _endDate = props._endDate;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_startDate ? new Date(_startDate) : new Date()),
+      _useState2 = _slicedToArray(_useState, 2),
+      startDate = _useState2[0],
+      setStartDate = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_endDate ? new Date(_endDate) : new Date()),
+      _useState4 = _slicedToArray(_useState3, 2),
+      endDate = _useState4[0],
+      setEndDate = _useState4[1];
+
+  var preValue = (0,react_use__WEBPACK_IMPORTED_MODULE_8__["default"])("".concat(startDate, "-").concat(endDate));
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (preValue) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.get(route(route().current()), {
+        startDate: moment__WEBPACK_IMPORTED_MODULE_1___default()(startDate).format('yyyy-MM-DD'),
+        endDate: moment__WEBPACK_IMPORTED_MODULE_1___default()(endDate).format('yyyy-MM-DD')
+      }, {
+        replace: true,
+        preserveState: true
+      });
+    }
+  }, [startDate, endDate]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_4__["default"], {
     auth: props.auth,
     errors: props.errors,
-    header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+    header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
       className: "font-semibold text-xl text-gray-800 leading-tight",
-      children: "Laporan"
+      children: "Gaji"
     }),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
-      title: "Report"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
+      title: "Payroll"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       className: "py-12",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "flex flex-row w-full sm:px-6 lg:px-8 space-x-4"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: "flex flex-col w-full sm:px-6 lg:px-8 space-y-2",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          className: "card bg-white w-full",
+          style: {
+            minHeight: '400px'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            className: "card-body",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              className: "flex flex-col md:flex-row space-y-2 md:space-y-0 items-start md:items-stretch w-full mb-4 justify-between",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                className: "btn-group my-auto",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                  className: "btn btn-info btn-outline",
+                  onClick: function onClick() {},
+                  children: "Download Excel"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                className: "flex flex-row md:space-x-4",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                    className: "label",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                      className: "label-text",
+                      children: "Tanggal Awal"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                    className: "relative",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_9___default()), {
+                      selected: startDate,
+                      onChange: function onChange(date) {
+                        setStartDate(date);
+                      },
+                      format: "dd/mm/yyyy",
+                      className: "input input-bordered",
+                      nextMonthButtonLabel: ">",
+                      previousMonthButtonLabel: "<"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                      className: "absolute right-2.5 rounded-l-none y-0 flex items-center top-2.5",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("svg", {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        className: "h-6 w-6",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("path", {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        })
+                      })
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                    className: "label",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                      className: "label-text",
+                      children: "Tanggal Akhir"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                    className: "relative",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_9___default()), {
+                      selected: endDate,
+                      onChange: function onChange(date) {
+                        setEndDate(date);
+                      },
+                      format: "dd/mm/yyyy",
+                      className: "input input-bordered",
+                      nextMonthButtonLabel: ">",
+                      previousMonthButtonLabel: "<"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                      className: "absolute right-2.5 rounded-l-none y-0 flex items-center top-2.5",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("svg", {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        className: "h-6 w-6",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("path", {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        })
+                      })
+                    })]
+                  })]
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "overflow-x-auto",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("table", {
+                className: "table w-full table-zebra",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                      children: "Tanggal"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                      children: "Nama Karyawan"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                      children: "Kontak"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                      children: "Total"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                      children: "Jumlah Item"
+                    })]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tbody", {
+                  children: payrolls.map(function (payroll) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_6__.formatDate)(payroll.date)
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                        children: payroll.employee.name
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                        children: payroll.employee.whatsapp
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_6__.formatIDR)(payroll.recived)
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_6__.formatIDR)(payroll.item_count)
+                      })]
+                    }, payroll.id);
+                  })
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Pagination__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              links: links
+            })]
+          })
+        })
       })
     })]
   });
@@ -98775,8 +99558,12 @@ var map = {
 	"./Dashboard.js": "./resources/js/Pages/Dashboard.js",
 	"./Employees": "./resources/js/Pages/Employees.js",
 	"./Employees.js": "./resources/js/Pages/Employees.js",
-	"./Payrolls": "./resources/js/Pages/Payrolls.js",
-	"./Payrolls.js": "./resources/js/Pages/Payrolls.js",
+	"./Payrolls/Create": "./resources/js/Pages/Payrolls/Create.js",
+	"./Payrolls/Create.js": "./resources/js/Pages/Payrolls/Create.js",
+	"./Payrolls/Edit": "./resources/js/Pages/Payrolls/Edit.js",
+	"./Payrolls/Edit.js": "./resources/js/Pages/Payrolls/Edit.js",
+	"./Payrolls/Index": "./resources/js/Pages/Payrolls/Index.js",
+	"./Payrolls/Index.js": "./resources/js/Pages/Payrolls/Index.js",
 	"./Products": "./resources/js/Pages/Products.js",
 	"./Products.js": "./resources/js/Pages/Products.js",
 	"./Report": "./resources/js/Pages/Report.js",

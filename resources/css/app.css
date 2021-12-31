@@ -96,3 +96,9 @@
 .react-datepicker__day--range-end {
     @apply bg-blue-500 text-white hover:text-gray-700 hover:bg-white;
 }
+
+.table td, .table th {
+    padding: 1rem;
+    vertical-align: middle;
+    white-space: normal;
+}

@@ -16,13 +16,14 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->q != null) {
-            $query = Product::where('name', 'like', '%'.$request->q.'%')->orWhere('description', 'like', '%'.$request->q.'%')->orderBy('id');
+            $query = Product::where('name', 'like', '%'.$request->q.'%')->orWhere('description', 'like', '%'.$request->q.'%')->orderBy('created_at', 'desc');
         } else {
-            $query = Product::orderBy('id');
+            $query = Product::orderBy('created_at', 'desc');
         }
 
         return inertia('Products', [
             'products' => $query->paginate(10),
+            '_search' => $request->q ? $request->q : ''
         ]);
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\ReportController;
 use App\Models\User;
 
 /*
@@ -50,11 +51,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
 
     Route::get('/payrolls', [PayrollController::class, 'index'])->name('payrolls.index');
+    Route::get('/payrolls/create', [PayrollController::class, 'create'])->name('payrolls.create');
     Route::post('/payrolls', [PayrollController::class, 'store'])->name('payrolls.store');
+    Route::get('/payrolls/{payroll}', [PayrollController::class, 'edit'])->name('payrolls.edit');
     Route::put('/payrolls/{payroll}', [PayrollController::class, 'update'])->name('payrolls.update');
     Route::delete('/payrolls/{payroll}', [PayrollController::class, 'destroy'])->name('payrolls.destroy');
 
-    Route::get('/report', fn () => inertia('Report'))->name('report');
+    Route::get('/report', [ReportController::class, 'index'])->name('report');
 });
 
 require __DIR__.'/auth.php';

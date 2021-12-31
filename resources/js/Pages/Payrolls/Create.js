@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import DatePicker from 'react-datepicker'
 import NumberFormat from 'react-number-format'
+import ReactToPrint from 'react-to-print'
 import { Inertia } from '@inertiajs/inertia'
 import { usePrevious } from 'react-use'
 import { toast } from 'react-toastify'
@@ -11,6 +12,7 @@ import Pagination from '@/Components/Pagination'
 import CloseIcon from '@/Components/CloseIcon'
 import EmployeeSelectInput from '@/Selects/EmployeeSelectInput'
 import { formatIDR } from '@/utils'
+import Print from '@/Pages/Payrolls/Print'
 
 export default function Create(props) {
   const { data: products, links } = props.products
@@ -19,6 +21,7 @@ export default function Create(props) {
       date: new Date(),
       employee_id: null,
       employee_name: '',
+      employee: null,
       cuts: 0,
       bonus: 0,
       items: [],
@@ -29,11 +32,14 @@ export default function Create(props) {
   const [search, setSearch] = useState(_search)
   const preValue = usePrevious(search)
 
+  const componentToPrint = useRef()
+
   const handleSelectedEmployee = (employee) => {
     setData({
         ...data,
         employee_id: employee.id,
         employee_name: `${employee.name} - ${employee.whatsapp}`,
+        employee: employee,
     })
   }
 
@@ -316,16 +322,33 @@ export default function Create(props) {
                                   >
                                       Simpan
                                   </div>
-                                  <div
-                                      className="btn btn-primary"
-                                      disabled={processing}
-                                  >
-                                      Cetak
-                                  </div>
+                                  <ReactToPrint
+                                      trigger={() => (
+                                          <div
+                                              className="btn btn-primary"
+                                              disabled={processing}
+                                          >
+                                              Cetak
+                                          </div>
+                                      )}
+                                      content={() => componentToPrint.current}
+                                  />
                               </div>
                           </div>
                       </div>
                   </div>
+              </div>
+              <div className="hidden">
+                  <Print 
+                    user={props.auth.user}
+                    date={data.date}
+                    employee={data.employee}
+                    items={data.items}
+                    amount={itemAmount}
+                    cuts={data.cuts}
+                    bonus={data.bonus}
+                    total={totalAmount}
+                    ref={componentToPrint} />
               </div>
           </div>
       </Authenticated>

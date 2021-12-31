@@ -2837,9 +2837,6 @@ html {
 .w-4 {
   width: 1rem;
 }
-.w-1\/6 {
-  width: 16.666667%;
-}
 .max-w-xl {
   max-width: 36rem;
 }
@@ -2849,11 +2846,17 @@ html {
 .max-w-7xl {
   max-width: 80rem;
 }
+.max-w-sm {
+  max-width: 24rem;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
 .shrink-0 {
   flex-shrink: 0;
+}
+.border-collapse {
+  border-collapse: collapse;
 }
 .origin-top {
   transform-origin: top;

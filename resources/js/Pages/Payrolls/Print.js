@@ -14,7 +14,7 @@ const Print = React.forwardRef((props, ref) => {
     return (
         <>
             <div ref={ref} className="p-4">
-                <table className="border-collapse border border-gray-400 w-full">
+                <table className="border-collapse border border-black w-full" border="1">
                     <thead>
                         <tr className="text-center border">
                             <th colSpan={4}>

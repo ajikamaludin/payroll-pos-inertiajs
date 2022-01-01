@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use PDF;
 use App\Models\Product;
 use App\Models\Payroll;
 use App\Models\PayrollItem;
@@ -198,5 +199,15 @@ class PayrollController extends Controller
         });
 
         return redirect()->route('payrolls.index');
+    }
+
+    public function pdf(Payroll $payroll)
+    {
+        $pdf = PDF::loadView('payroll', [
+            'payroll' => $payroll->load(['employee', 'items.product']),
+            'user' => auth()->user()
+        ]);
+    
+        return $pdf->download($payroll->employee->name.'-'.$payroll->date.'.pdf');
     }
 }

@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payrolls/{payroll}', [PayrollController::class, 'edit'])->name('payrolls.edit');
     Route::put('/payrolls/{payroll}', [PayrollController::class, 'update'])->name('payrolls.update');
     Route::delete('/payrolls/{payroll}', [PayrollController::class, 'destroy'])->name('payrolls.destroy');
+    Route::get('/payrolls/{payroll}/pdf', [PayrollController::class, 'pdf'])->name('payrolls.pdf');
 
     Route::get('/report', [ReportController::class, 'index'])->name('report');
     Route::get('/report/export', [ReportController::class, 'export'])->name('report.export');

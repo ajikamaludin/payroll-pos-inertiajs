@@ -180,9 +180,22 @@ export default function Payrolls(props) {
                                                     {formatIDR(payroll.recived)}
                                                 </td>
                                                 <td className="text-right">
+                                                    <a
+                                                        className="btn btn-outline mx-1"
+                                                        href={route(
+                                                            'payrolls.pdf',
+                                                            payroll
+                                                        )}
+                                                        download={`${payroll.employee.name}-${payroll.date}.pdf`}
+                                                    >
+                                                        PDF
+                                                    </a>
                                                     <Link
                                                         className="btn btn-primary mx-1"
-                                                        href={route('payrolls.edit', payroll)}
+                                                        href={route(
+                                                            'payrolls.edit',
+                                                            payroll
+                                                        )}
                                                     >
                                                         Edit
                                                     </Link>

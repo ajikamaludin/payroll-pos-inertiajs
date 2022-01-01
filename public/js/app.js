@@ -9883,7 +9883,12 @@ function Payrolls(props) {
                         children: (0,_utils__WEBPACK_IMPORTED_MODULE_9__.formatIDR)(payroll.recived)
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("td", {
                         className: "text-right",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("a", {
+                          className: "btn btn-outline mx-1",
+                          href: route('payrolls.pdf', payroll),
+                          download: "".concat(payroll.employee.name, "-").concat(payroll.date, ".pdf"),
+                          children: "PDF"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
                           className: "btn btn-primary mx-1",
                           href: route('payrolls.edit', payroll),
                           children: "Edit"
@@ -9961,7 +9966,8 @@ var Print = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function 
       ref: ref,
       className: "p-4",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
-        className: "border-collapse border border-gray-400 w-full",
+        className: "border-collapse border border-black w-full",
+        border: "1",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
             className: "text-center border",

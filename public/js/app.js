@@ -7077,6 +7077,8 @@ function Authenticated(_ref) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     className: "min-h-screen bg-gray-100",
+    copyright: "aji19kamaludin.com",
+    creator: "aji19kamaludin.com",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("nav", {
       className: "bg-white border-b border-gray-100",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
@@ -8866,7 +8868,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Create(props) {
-  var _jsx2, _jsx3, _jsx4;
+  var _jsx3, _jsx4, _jsx5;
 
   var _props$products = props.products,
       products = _props$products.data,
@@ -8934,6 +8936,18 @@ function Create(props) {
     })));
   };
 
+  var setQuantity = function setQuantity(product, value) {
+    setData('items', data.items.map(function (item) {
+      if (item.id === product.id) {
+        return _objectSpread(_objectSpread({}, item), {}, {
+          quantity: +value
+        });
+      } else {
+        return item;
+      }
+    }));
+  };
+
   var remoteItem = function remoteItem(product) {
     setData('items', data.items.filter(function (item) {
       return item.id !== product.id;
@@ -8996,7 +9010,7 @@ function Create(props) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
         className: "flex flex-col md:flex-row w-full sm:px-6 lg:px-8 space-y-4 md:space-x-4 md:space-y-0",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-          className: "card bg-white w-full md:w-2/3",
+          className: "card bg-white w-full md:w-7/12",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "p-4",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
@@ -9053,7 +9067,7 @@ function Create(props) {
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-          className: "card bg-white w-full md:w-1/3",
+          className: "card bg-white w-full md:w-5/12",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "flex flex-col p-2 mb-4",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
@@ -9105,11 +9119,21 @@ function Create(props) {
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("tbody", {
                   children: data.items.map(function (item) {
+                    var _jsx2;
+
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("tr", {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
                         children: item.name
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
-                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_10__.formatIDR)(item.quantity)
+                        className: "p-0",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx2 = {
+                          thousandSeparator: true,
+                          className: "input input-bordered w-14 py-0 px-3 text-right",
+                          value: item.quantity
+                        }, _defineProperty(_jsx2, "thousandSeparator", "."), _defineProperty(_jsx2, "decimalSeparator", ","), _defineProperty(_jsx2, "onValueChange", function onValueChange(_ref) {
+                          var value = _ref.value;
+                          return setQuantity(item, value);
+                        }), _defineProperty(_jsx2, "placeholder", "qty"), _jsx2))
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
                         children: (0,_utils__WEBPACK_IMPORTED_MODULE_10__.formatIDR)(item.quantity * item.price)
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
@@ -9132,14 +9156,14 @@ function Create(props) {
                   className: "input-group w-full",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                     children: "Potongan"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx2 = {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx3 = {
                     thousandSeparator: true,
                     className: "input input-bordered w-full text-right ".concat(errors.cuts ? 'input-error' : ''),
                     value: data.cuts
-                  }, _defineProperty(_jsx2, "thousandSeparator", "."), _defineProperty(_jsx2, "decimalSeparator", ","), _defineProperty(_jsx2, "onValueChange", function onValueChange(_ref) {
-                    var value = _ref.value;
+                  }, _defineProperty(_jsx3, "thousandSeparator", "."), _defineProperty(_jsx3, "decimalSeparator", ","), _defineProperty(_jsx3, "onValueChange", function onValueChange(_ref2) {
+                    var value = _ref2.value;
                     return setData('cuts', value);
-                  }), _defineProperty(_jsx2, "placeholder", "potongan"), _jsx2))]
+                  }), _defineProperty(_jsx3, "placeholder", "potongan"), _jsx3))]
                 }), errors.cuts && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("label", {
                   className: "label",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
@@ -9153,14 +9177,14 @@ function Create(props) {
                   className: "input-group w-full",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                     children: "Bonus"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx3 = {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx4 = {
                     thousandSeparator: true,
                     className: "input input-bordered w-full text-right ".concat(errors.bonus ? 'input-error' : ''),
                     value: data.bonus
-                  }, _defineProperty(_jsx3, "thousandSeparator", "."), _defineProperty(_jsx3, "decimalSeparator", ","), _defineProperty(_jsx3, "onValueChange", function onValueChange(_ref2) {
-                    var value = _ref2.value;
+                  }, _defineProperty(_jsx4, "thousandSeparator", "."), _defineProperty(_jsx4, "decimalSeparator", ","), _defineProperty(_jsx4, "onValueChange", function onValueChange(_ref3) {
+                    var value = _ref3.value;
                     return setData('bonus', value);
-                  }), _defineProperty(_jsx3, "placeholder", "bonus"), _jsx3))]
+                  }), _defineProperty(_jsx4, "placeholder", "bonus"), _jsx4))]
                 }), errors.bonus && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("label", {
                   className: "label",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
@@ -9174,11 +9198,11 @@ function Create(props) {
                   className: "input-group w-full",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                     children: "Total"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx4 = {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx5 = {
                     thousandSeparator: true,
                     className: "input input-bordered w-full text-right",
                     value: totalAmount
-                  }, _defineProperty(_jsx4, "thousandSeparator", "."), _defineProperty(_jsx4, "decimalSeparator", ","), _defineProperty(_jsx4, "readOnly", true), _defineProperty(_jsx4, "placeholder", "total"), _jsx4))]
+                  }, _defineProperty(_jsx5, "thousandSeparator", "."), _defineProperty(_jsx5, "decimalSeparator", ","), _defineProperty(_jsx5, "readOnly", true), _defineProperty(_jsx5, "placeholder", "total"), _jsx5))]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "grid grid-cols-2 gap-2 w-full",
@@ -9286,7 +9310,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function Edit(props) {
-  var _jsx2, _jsx3, _jsx4;
+  var _jsx3, _jsx4, _jsx5;
 
   var _props$products = props.products,
       products = _props$products.data,
@@ -9360,6 +9384,18 @@ function Edit(props) {
     })));
   };
 
+  var setQuantity = function setQuantity(product, value) {
+    setData('items', data.items.map(function (item) {
+      if (item.id === product.id) {
+        return _objectSpread(_objectSpread({}, item), {}, {
+          quantity: +value
+        });
+      } else {
+        return item;
+      }
+    }));
+  };
+
   var remoteItem = function remoteItem(product) {
     setData('items', data.items.filter(function (item) {
       return item.id !== product.id;
@@ -9422,7 +9458,7 @@ function Edit(props) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
         className: "flex flex-col md:flex-row w-full sm:px-6 lg:px-8 space-y-4 md:space-x-4 md:space-y-0",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-          className: "card bg-white w-full md:w-2/3",
+          className: "card bg-white w-full md:w-7/12",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "p-4",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
@@ -9479,7 +9515,7 @@ function Edit(props) {
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-          className: "card bg-white w-full md:w-1/3",
+          className: "card bg-white w-full md:w-5/12",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "flex flex-col p-2 mb-4",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
@@ -9531,11 +9567,21 @@ function Edit(props) {
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("tbody", {
                   children: data.items.map(function (item) {
+                    var _jsx2;
+
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("tr", {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
                         children: item.name
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
-                        children: (0,_utils__WEBPACK_IMPORTED_MODULE_10__.formatIDR)(item.quantity)
+                        className: "p-0",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx2 = {
+                          thousandSeparator: true,
+                          className: "input input-bordered w-14 py-0 px-3 text-right",
+                          value: (0,_utils__WEBPACK_IMPORTED_MODULE_10__.formatIDR)(item.quantity)
+                        }, _defineProperty(_jsx2, "thousandSeparator", "."), _defineProperty(_jsx2, "decimalSeparator", ","), _defineProperty(_jsx2, "onValueChange", function onValueChange(_ref) {
+                          var value = _ref.value;
+                          return setQuantity(item, value);
+                        }), _defineProperty(_jsx2, "placeholder", "qty"), _jsx2))
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
                         children: (0,_utils__WEBPACK_IMPORTED_MODULE_10__.formatIDR)(item.quantity * item.price)
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
@@ -9558,14 +9604,14 @@ function Edit(props) {
                   className: "input-group w-full",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                     children: "Potongan"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx2 = {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx3 = {
                     thousandSeparator: true,
                     className: "input input-bordered w-full text-right ".concat(errors.cuts ? 'input-error' : ''),
                     value: (0,_utils__WEBPACK_IMPORTED_MODULE_10__.formatIDR)(data.cuts)
-                  }, _defineProperty(_jsx2, "thousandSeparator", "."), _defineProperty(_jsx2, "decimalSeparator", ","), _defineProperty(_jsx2, "onValueChange", function onValueChange(_ref) {
-                    var value = _ref.value;
+                  }, _defineProperty(_jsx3, "thousandSeparator", "."), _defineProperty(_jsx3, "decimalSeparator", ","), _defineProperty(_jsx3, "onValueChange", function onValueChange(_ref2) {
+                    var value = _ref2.value;
                     return setData('cuts', value);
-                  }), _defineProperty(_jsx2, "placeholder", "potongan"), _jsx2))]
+                  }), _defineProperty(_jsx3, "placeholder", "potongan"), _jsx3))]
                 }), errors.cuts && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("label", {
                   className: "label",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
@@ -9579,14 +9625,14 @@ function Edit(props) {
                   className: "input-group w-full",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                     children: "Bonus"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx3 = {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx4 = {
                     thousandSeparator: true,
                     className: "input input-bordered w-full text-right ".concat(errors.bonus ? 'input-error' : ''),
                     value: (0,_utils__WEBPACK_IMPORTED_MODULE_10__.formatIDR)(data.bonus)
-                  }, _defineProperty(_jsx3, "thousandSeparator", "."), _defineProperty(_jsx3, "decimalSeparator", ","), _defineProperty(_jsx3, "onValueChange", function onValueChange(_ref2) {
-                    var value = _ref2.value;
+                  }, _defineProperty(_jsx4, "thousandSeparator", "."), _defineProperty(_jsx4, "decimalSeparator", ","), _defineProperty(_jsx4, "onValueChange", function onValueChange(_ref3) {
+                    var value = _ref3.value;
                     return setData('bonus', value);
-                  }), _defineProperty(_jsx3, "placeholder", "bonus"), _jsx3))]
+                  }), _defineProperty(_jsx4, "placeholder", "bonus"), _jsx4))]
                 }), errors.bonus && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("label", {
                   className: "label",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
@@ -9600,11 +9646,11 @@ function Edit(props) {
                   className: "input-group w-full",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                     children: "Total"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx4 = {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_number_format__WEBPACK_IMPORTED_MODULE_1__["default"], (_jsx5 = {
                     thousandSeparator: true,
                     className: "input input-bordered w-full text-right",
                     value: totalAmount
-                  }, _defineProperty(_jsx4, "thousandSeparator", "."), _defineProperty(_jsx4, "decimalSeparator", ","), _defineProperty(_jsx4, "readOnly", true), _defineProperty(_jsx4, "placeholder", "total"), _jsx4))]
+                  }, _defineProperty(_jsx5, "thousandSeparator", "."), _defineProperty(_jsx5, "decimalSeparator", ","), _defineProperty(_jsx5, "readOnly", true), _defineProperty(_jsx5, "placeholder", "total"), _jsx5))]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "grid grid-cols-2 gap-2 w-full",

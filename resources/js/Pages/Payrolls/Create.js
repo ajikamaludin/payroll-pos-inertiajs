@@ -68,6 +68,19 @@ export default function Create(props) {
     }))
   }
 
+  const setQuantity = (product, value) => {
+    setData('items', data.items.map(item => {
+      if(item.id === product.id) {
+        return {
+          ...item,
+          quantity: +value,
+        }
+      } else {
+        return item
+      }
+    }))
+  }
+
   const remoteItem = (product) => {
     setData('items', data.items.filter(item => item.id !== product.id))
   }
@@ -127,7 +140,7 @@ export default function Create(props) {
           <Head title="Payrolls" />
           <div className="py-12">
               <div className="flex flex-col md:flex-row w-full sm:px-6 lg:px-8 space-y-4 md:space-x-4 md:space-y-0">
-                  <div className="card bg-white w-full md:w-2/3">
+                  <div className="card bg-white w-full md:w-7/12">
                       <div className="p-4">
                           <div className="flex flex-row justify-end mb-2">
                               <div className="form-control">
@@ -182,7 +195,7 @@ export default function Create(props) {
                           </div>
                       </div>
                   </div>
-                  <div className="card bg-white w-full md:w-1/3">
+                  <div className="card bg-white w-full md:w-5/12">
                       <div className="flex flex-col p-2 mb-4">
                           <div>
                               <DatePicker
@@ -232,8 +245,20 @@ export default function Create(props) {
                                       {data.items.map((item) => (
                                           <tr key={item.id}>
                                               <td>{item.name}</td>
-                                              <td>
-                                                  {formatIDR(item.quantity)}
+                                              <td className="p-0">
+                                                  <NumberFormat
+                                                      thousandSeparator={true}
+                                                      className="input input-bordered w-14 py-0 px-3 text-right"
+                                                      value={item.quantity}
+                                                      thousandSeparator="."
+                                                      decimalSeparator=","
+                                                      onValueChange={({
+                                                          value,
+                                                      }) =>
+                                                          setQuantity(item, value)
+                                                      }
+                                                      placeholder="qty"
+                                                  />
                                               </td>
                                               <td>
                                                   {formatIDR(
@@ -322,7 +347,10 @@ export default function Create(props) {
                                   <div
                                       className="btn btn-primary"
                                       disabled={
-                                          !processing ? (data.employee_id === null || data.items.length === 0) : processing
+                                          !processing
+                                              ? data.employee_id === null ||
+                                                data.items.length === 0
+                                              : processing
                                       }
                                       onClick={handleSubmit}
                                   >
@@ -333,7 +361,8 @@ export default function Create(props) {
                                           <div
                                               className="btn btn-primary"
                                               disabled={
-                                                  (data.employee_id === null || data.items.length === 0)
+                                                  data.employee_id === null ||
+                                                  data.items.length === 0
                                               }
                                           >
                                               Cetak

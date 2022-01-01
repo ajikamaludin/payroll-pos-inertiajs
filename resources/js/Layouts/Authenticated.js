@@ -15,7 +15,11 @@ export default function Authenticated({ auth, header, children }) {
     const {isOpen, toggle} = useModalState(false)
 
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div
+            className="min-h-screen bg-gray-100"
+            copyright="aji19kamaludin.com"
+            creator="aji19kamaludin.com"
+        >
             <nav className="bg-white border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">

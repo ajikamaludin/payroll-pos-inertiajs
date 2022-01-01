@@ -36,6 +36,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
+                'author/creator' => 'aji19kamaludin@gmail.com/ajikamaludin.id/081325307692'
             ],
         ]);
     }

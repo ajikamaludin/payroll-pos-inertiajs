@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\PayrollExport;
+use App\Exports\PayrollExportFromView;
 use App\Models\Payroll;
 use Illuminate\Http\Request;
 
@@ -33,5 +34,10 @@ class ReportController extends Controller
     public function export(Request $request)
     {
         return (new PayrollExport($request->startDate, $request->endDate))->download('reports.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+    }
+
+    public function exportPdf(Request $request)
+    {
+        return (new PayrollExportFromView($request->startDate, $request->endDate))->download('reports.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
     }
 }

@@ -62,9 +62,19 @@ export default function Reports(props) {
                                 <div className="btn-group my-auto">
                                     <a
                                         className="btn btn-info btn-outline"
-                                        href={`${route('report.export')}?${qs.stringify(params)}`}
+                                        href={`${route(
+                                            'report.export'
+                                        )}?${qs.stringify(params)}`}
                                     >
                                         Download Excel
+                                    </a>
+                                    <a
+                                        className="btn btn-info btn-outline"
+                                        href={`${route(
+                                            'report.export-pdf'
+                                        )}?${qs.stringify(params)}`}
+                                    >
+                                        Download PDF
                                     </a>
                                 </div>
                                 <div className="flex flex-row md:space-x-4">
@@ -158,19 +168,23 @@ export default function Reports(props) {
                                                     {formatDate(payroll.date)}
                                                 </th>
                                                 <td>{payroll.employee.name}</td>
-                                                <td>{payroll.employee.whatsapp}</td>
+                                                <td>
+                                                    {payroll.employee.whatsapp}
+                                                </td>
                                                 <td>
                                                     {formatIDR(payroll.recived)}
                                                 </td>
                                                 <td>
-                                                    {formatIDR(payroll.item_count)}
+                                                    {formatIDR(
+                                                        payroll.item_count
+                                                    )}
                                                 </td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
                             </div>
-                            <Pagination links={links} params={params}/>
+                            <Pagination links={links} params={params} />
                         </div>
                     </div>
                 </div>

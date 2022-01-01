@@ -10391,13 +10391,17 @@ function Reports(props) {
             className: "card-body",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "flex flex-col md:flex-row space-y-2 md:space-y-0 items-start md:items-stretch w-full mb-4 justify-between",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "btn-group my-auto",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
                   className: "btn btn-info btn-outline",
                   href: "".concat(route('report.export'), "?").concat(qs__WEBPACK_IMPORTED_MODULE_2___default().stringify(params)),
                   children: "Download Excel"
-                })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
+                  className: "btn btn-info btn-outline",
+                  href: "".concat(route('report.export-pdf'), "?").concat(qs__WEBPACK_IMPORTED_MODULE_2___default().stringify(params)),
+                  children: "Download PDF"
+                })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "flex flex-row md:space-x-4",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {

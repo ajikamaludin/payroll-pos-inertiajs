@@ -27,9 +27,11 @@
         "tailwindcss": "^3.0.0"
     },
     "dependencies": {
+        "chart.js": "^3.7.0",
         "daisyui": "^1.20.0",
         "moment": "^2.29.1",
         "qs": "^6.10.2",
+        "react-chartjs-2": "^4.0.0",
         "react-datepicker": "^4.5.0",
         "react-number-format": "^4.9.0",
         "react-to-print": "^2.14.3",

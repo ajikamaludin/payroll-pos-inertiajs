@@ -26,4 +26,21 @@ class Employee extends Model
         }
         return null;
     }
+
+    public function payrolls()
+    {
+        return $this->hasMany(Payroll::class);
+    }
+
+    protected static function booted()
+    {
+        static::deleting(function ($model) {
+            if ($model->payrolls()->count() >= 1) {
+                foreach ($model->payrolls as $payroll) {
+                    $payroll->items()->delete();
+                    $payroll->delete();
+                }
+            }
+        });
+    }
 }

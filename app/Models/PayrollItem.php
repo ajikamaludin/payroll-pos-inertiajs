@@ -16,8 +16,15 @@ class PayrollItem extends Model
         'price',
     ];
 
+    protected $cascadeDeletes = ['payroll'];
+
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function payroll()
+    {
+        return $this->belongsTo(Payroll::class);
     }
 }

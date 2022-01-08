@@ -26,4 +26,33 @@ class Product extends Model
         }
         return null;
     }
+
+    public function payrollItems()
+    {
+        return $this->hasMany(PayrollItem::class);
+    }
+
+    public function payrolls()
+    {
+        return $this->hasManyThrough(
+            Payroll::class,
+            PayrollItem::class,
+            'product_id',
+            'id',
+            'id',
+            'payroll_id'
+        );
+    }
+
+    protected static function booted()
+    {
+        static::deleting(function ($model) {
+            if ($model->payrolls()->count() >= 1) {
+                foreach ($model->payrolls as $payroll) {
+                    $payroll->items()->delete();
+                    $payroll->delete();
+                }
+            }
+        });
+    }
 }

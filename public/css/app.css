@@ -1856,13 +1856,13 @@ html {
   margin-left: auto;
   margin-right: auto;
 }
-.mx-1 {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-}
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
+}
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 .my-2 {
   margin-top: 0.5rem;
@@ -1986,9 +1986,6 @@ html {
 }
 .max-h-96 {
   max-height: 24rem;
-}
-.max-h-11 {
-  max-height: 2.75rem;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -2367,11 +2364,11 @@ html {
 .pb-8 {
   padding-bottom: 2rem;
 }
-.pl-2 {
-  padding-left: 0.5rem;
-}
 .pb-4 {
   padding-bottom: 1rem;
+}
+.pl-2 {
+  padding-left: 0.5rem;
 }
 .text-left {
   text-align: left;
@@ -2610,23 +2607,24 @@ html {
   }
 }
 .react-datepicker-popper {
-  z-index: 40;
-  width: 18rem;
-  border-radius: 0.25rem;
-  border-width: 2px;
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    inset: 0px 0px auto auto !important;
+    z-index: 40;
+    width: 18rem;
+    border-radius: 0.25rem;
+    border-width: 2px;
+    --tw-border-opacity: 1;
+    border-color: rgb(229 231 235 / var(--tw-border-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .react-datepicker-left {
   position: absolute !important;

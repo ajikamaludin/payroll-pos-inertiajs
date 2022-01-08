@@ -40,7 +40,9 @@ class DashboardController extends Controller
                     ->get();
 
         $products = PayrollItem::selectRaw('product_id, SUM(quantity) as count')
-                    ->whereBetween(DB::raw('DATE(created_at)'), [$startDate, $endDate])
+                    ->whereHas('payroll', function ($query) use ($startDate, $endDate) {
+                        return $query->whereBetween('date', [$startDate, $endDate]);
+                    })
                     ->groupBy('product_id')
                     ->with(['product'])
                     ->get();

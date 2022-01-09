@@ -75,7 +75,7 @@ function formatIDR($output) {
     <table class="border-collapse border border-gray-400 w-full" border="1">
         <thead>
             <tr class="text-center border">
-                <th colspan="4">
+                <th colspan="5">
                     <div class="flex text-md justify-center items-center font-bold text-4xl py-4">
                         GAJIAN KONVEKSI
                     </div>
@@ -93,7 +93,7 @@ function formatIDR($output) {
                 <td class="border p-2">
                     Nomer Telpon
                 </td>
-                <td class="border p-2">
+                <td class="border p-2" colspan="2">
                     {{ $payroll->employee->whatsapp }}
                 </td>
             </tr>
@@ -107,12 +107,12 @@ function formatIDR($output) {
                 <td class="border p-2">
                     Dibuat Oleh
                 </td>
-                <td class="border p-2">
+                <td class="border p-2" colspan="2">
                     {{ $user->name }}
                 </td>
             </tr>
             <tr class="border text-center">
-                <th colspan="4">
+                <th colspan="5">
                     <div class="flex text-md justify-center items-center font-bold text-3xl py-4">
                         Detail Gajian
                     </div>
@@ -131,6 +131,9 @@ function formatIDR($output) {
                 <td class="border p-2">
                     Jumlah
                 </td>
+                <td class="border p-2">
+                    Subtotal
+                </td>
             </tr>
             @foreach($payroll->items as $item)
             <tr class="border">
@@ -146,10 +149,13 @@ function formatIDR($output) {
                 <td class="border p-2">
                     {{ formatIDR($item->quantity) }}
                 </td>
+                <td class="border p-2">
+                    {{ formatIDR($item->price * $item->quantity) }}
+                </td>
             </tr>
             @endforeach
             <tr class="border">
-                <td class="border p-2 text-right" colspan="3">
+                <td class="border p-2 text-right" colspan="4">
                     Total
                 </td>
                 <td class="border p-2">
@@ -157,7 +163,7 @@ function formatIDR($output) {
                 </td>
             </tr>
             <tr class="border">
-                <td class="border p-2 text-right" colspan="3">
+                <td class="border p-2 text-right" colspan="4">
                     Potongan/Pinjaman
                 </td>
                 <td class="border p-2">
@@ -165,7 +171,7 @@ function formatIDR($output) {
                 </td>
             </tr>
             <tr class="border">
-                <td class="border p-2 text-right" colspan="3">
+                <td class="border p-2 text-right" colspan="4">
                     Bonus
                 </td>
                 <td class="border p-2">
@@ -173,7 +179,7 @@ function formatIDR($output) {
                 </td>
             </tr>
             <tr class="border">
-                <td class="border p-2 text-right" colspan="3">
+                <td class="border p-2 text-right" colspan="4">
                     Total Diterima
                 </td>
                 <td class="border p-2 font-bold">

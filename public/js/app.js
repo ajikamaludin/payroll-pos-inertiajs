@@ -10269,7 +10269,7 @@ var Print = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function 
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
             className: "text-center border",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              colSpan: 4,
+              colSpan: 5,
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "flex text-md justify-center items-center font-bold text-4xl py-4",
                 children: "GAJIAN KONVEKSI"
@@ -10286,6 +10286,7 @@ var Print = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function 
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
               children: "Nomer Telpon"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
+              colSpan: 2,
               children: employee === null || employee === void 0 ? void 0 : employee.whatsapp
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
@@ -10297,12 +10298,13 @@ var Print = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function 
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
               children: "Dibuat Oleh"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
+              colSpan: 2,
               children: user === null || user === void 0 ? void 0 : user.name
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
             className: "border text-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              colSpan: 4,
+              colSpan: 5,
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "flex text-md justify-center items-center font-bold text-3xl py-4",
                 children: "Detail Gajian"
@@ -10319,6 +10321,8 @@ var Print = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function 
               children: "Harga"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
               children: "Jumlah"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
+              children: "Subtotal"
             })]
           }), items === null || items === void 0 ? void 0 : items.map(function (item, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
@@ -10332,12 +10336,14 @@ var Print = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function 
                 children: (0,_utils__WEBPACK_IMPORTED_MODULE_1__.formatIDR)(item === null || item === void 0 ? void 0 : item.price)
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
                 children: (0,_utils__WEBPACK_IMPORTED_MODULE_1__.formatIDR)(item === null || item === void 0 ? void 0 : item.quantity)
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
+                children: (0,_utils__WEBPACK_IMPORTED_MODULE_1__.formatIDR)((item === null || item === void 0 ? void 0 : item.quantity) * (item === null || item === void 0 ? void 0 : item.price))
               })]
             }, index);
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
             className: "border",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
-              colSpan: 3,
+              colSpan: 4,
               className: "text-right",
               children: "Total"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
@@ -10346,7 +10352,7 @@ var Print = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function 
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
             className: "border",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
-              colSpan: 3,
+              colSpan: 4,
               className: "text-right",
               children: "Potongan/Pinjaman"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
@@ -10355,7 +10361,7 @@ var Print = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function 
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
             className: "border",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
-              colSpan: 3,
+              colSpan: 4,
               className: "text-right",
               children: "Bonus"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
@@ -10364,7 +10370,7 @@ var Print = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function 
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
             className: "border",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {
-              colSpan: 3,
+              colSpan: 4,
               className: "text-right",
               children: "Total Diterima"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Td, {

@@ -14,10 +14,13 @@ const Print = React.forwardRef((props, ref) => {
     return (
         <>
             <div ref={ref} className="p-4">
-                <table className="border-collapse border border-black w-full" border="1">
+                <table
+                    className="border-collapse border border-black w-full"
+                    border="1"
+                >
                     <thead>
                         <tr className="text-center border">
-                            <th colSpan={4}>
+                            <th colSpan={5}>
                                 <div className="flex text-md justify-center items-center font-bold text-4xl py-4">
                                     GAJIAN KONVEKSI
                                 </div>
@@ -29,16 +32,16 @@ const Print = React.forwardRef((props, ref) => {
                             <Td>Nama Tukang</Td>
                             <Td>{employee?.name}</Td>
                             <Td>Nomer Telpon</Td>
-                            <Td>{employee?.whatsapp}</Td>
+                            <Td colSpan={2}>{employee?.whatsapp}</Td>
                         </tr>
                         <tr className="border">
                             <Td>Tanggal Pembuatan</Td>
                             <Td>{formatDate(date)}</Td>
                             <Td>Dibuat Oleh</Td>
-                            <Td>{user?.name}</Td>
+                            <Td colSpan={2}>{user?.name}</Td>
                         </tr>
                         <tr className="border text-center">
-                            <th colSpan={4}>
+                            <th colSpan={5}>
                                 <div className="flex text-md justify-center items-center font-bold text-3xl py-4">
                                     Detail Gajian
                                 </div>
@@ -49,6 +52,7 @@ const Print = React.forwardRef((props, ref) => {
                             <Td>Nama Barang</Td>
                             <Td>Harga</Td>
                             <Td>Jumlah</Td>
+                            <Td>Subtotal</Td>
                         </tr>
                         {items?.map((item, index) => (
                             <tr className="border" key={index}>
@@ -56,28 +60,31 @@ const Print = React.forwardRef((props, ref) => {
                                 <Td>{item?.name}</Td>
                                 <Td>{formatIDR(item?.price)}</Td>
                                 <Td>{formatIDR(item?.quantity)}</Td>
+                                <Td>
+                                    {formatIDR(item?.quantity * item?.price)}
+                                </Td>
                             </tr>
                         ))}
                         <tr className="border">
-                            <Td colSpan={3} className="text-right">
+                            <Td colSpan={4} className="text-right">
                                 Total
                             </Td>
                             <Td>{formatIDR(amount)}</Td>
                         </tr>
                         <tr className="border">
-                            <Td colSpan={3} className="text-right">
+                            <Td colSpan={4} className="text-right">
                                 Potongan/Pinjaman
                             </Td>
                             <Td>{formatIDR(cuts)}</Td>
                         </tr>
                         <tr className="border">
-                            <Td colSpan={3} className="text-right">
+                            <Td colSpan={4} className="text-right">
                                 Bonus
                             </Td>
                             <Td>{formatIDR(bonus)}</Td>
                         </tr>
                         <tr className="border">
-                            <Td colSpan={3} className="text-right">
+                            <Td colSpan={4} className="text-right">
                                 Total Diterima
                             </Td>
                             <Td className="font-bold">{formatIDR(total)}</Td>

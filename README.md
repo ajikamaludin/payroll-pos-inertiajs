@@ -19,6 +19,7 @@ $ composer install
 $ npm install
 $ npm run dev # optional only if any changes you make in resource/js
 $ php artisan migrate
+$ php artisan storage:link
 $ php artisan serve
 ```
 

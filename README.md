@@ -17,22 +17,16 @@ record products and employeess to print payments invoices for Indonesian workers
 $ cp .env.example .env # create your database first, and then configure your database connection
 $ composer install
 $ npm install
-$ npm run dev # optional only if any changes you make in resource/js
+$ npm run dev # to dev
 $ php artisan migrate
 $ php artisan storage:link
 $ php artisan serve
 ```
 
-## Compile Assets
+## Compile Assets (for prod)
 
 ```bash
-$ npm run dev
-```
-
-or
-
-```bash
-$ npm run watch
+$ npm run build
 ```
 
 ## Screenshot

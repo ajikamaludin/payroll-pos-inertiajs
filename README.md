@@ -10,18 +10,27 @@ record products and employeess to print payments invoices for Indonesian workers
 ## Requirements
 
 * PHP 8.0 or latest
+* Node 16+ or latest
 
 ## How to run
 
 ```bash
 $ cp .env.example .env # create your database first, and then configure your database connection
 $ composer install
-$ npm install
-$ npm run dev # to dev
-$ php artisan migrate
+$ php artisan migrate --seed
 $ php artisan storage:link
 $ php artisan serve
+$ npm install
+$ npm run dev # compiling asset for development
 ```
+
+## Default User
+
+```
+username : admin@admin.com
+password : password
+```
+
 
 ## Compile Assets (for prod)
 

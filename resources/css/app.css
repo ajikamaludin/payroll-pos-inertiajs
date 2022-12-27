@@ -1,6 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
 .react-datepicker__input-container input {
     @apply block w-full text-base md:text-sm bg-white border border-gray-300 rounded-md shadow-sm ;
 }
